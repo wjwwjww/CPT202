@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Style for the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0; /* Remove default body margin */
+        }
+
+        /* Style for the plans container */
+        .plan {
+            display: flex; /* Use flexbox to arrange plans horizontally */
+            justify-content: space-between; /* Add space between plans */
+            height: 500px;
+        }
+
+        /* Style for individual plans */
+        .plan > div {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-right: 40px; /* Add more spacing between plans */
+            flex: 1; /* Each plan takes equal space */
+            min-width: 300px; /* Set minimum width for each plan */
+
+        }
+
+        /* Style for plan titles */
+        .plan h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for plan details */
+        .plan h2 {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for plan durations */
+        .plan h4 {
+            position: relative;
+            bottom:-50px;
+            margin-top: 15px;
+        }
+
+        /* Style for duration buttons */
+        .plan form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        /* Hover effect for duration buttons */
+        .plan button:hover {
+            background-color: #0056b3;
+        }
+
+
+    </style>
+</head>
+<body>
+<p>you need to choose a plan for making appointment</p>
+<div class="plan">
+
+    <div class="plan1">
+        <h1>Silver Plan</h1>
+        <h2>you can choose from 3-star trainers</h2>
+        <h4>
+            Duration
+            <form method="post" action="plan.php">
+                <button name="plan" value="3-6-month" type="submit">6-month</button>
+            </form>
+            <form method="post" action="plan.php">
+                <button name="plan" value="3-12-month" type="submit">12-month</button>
+            </form>
+        </h4>
+    </div>
+
+    <div class="plan2">
+        <h1>Gold Plan</h1>
+        <h2>you can choose from 4-star trainers</h2>
+        <h4>
+            Duration:
+            <form method="post" action="plan.php">
+                <button name="plan" value="4-6-month" type="submit">6-month</button>
+            </form>
+            <form method="post" action="plan.php">
+                <button name="plan" value="4-12-month" type="submit">12-month</button>
+            </form>
+        </h4>
+    </div>
+
+    <div class="plan3">
+        <h1>Diamond Plan</h1>
+        <h2>you can choose from 5-star trainers</h2>
+        <h4>
+            Duration:
+            <form method="post" action="plan.php">
+                <button name="plan" value="5-6-month" type="submit">6-month</button>
+            </form>
+            <form method="post" action="plan.php">
+                <button name="plan" value="5-12-month" type="submit">12-month</button>
+            </form>
+        </h4>
+    </div>
+
+</div>
+</body>
+</html>

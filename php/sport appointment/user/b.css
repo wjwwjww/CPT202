@@ -1,0 +1,83 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set body background color and font */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    background-image: url("img_1.png");
+    background-size: 100% auto;
+}
+
+/* Style the appointment container */
+.appointment {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure relative positioning for absolute positioning of history */
+}
+
+/* Style form elements */
+.appointment form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.appointment form input[type="date"],
+.appointment form input[type="time"],
+.appointment form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.appointment form button {
+    width: 40%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.appointment form button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the history button */
+.history {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.history button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+a[href="logout.php"] {
+    color: red; /* Change the color to your preference */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
+    /* Add any other styles you want */
+    position: relative;
+}

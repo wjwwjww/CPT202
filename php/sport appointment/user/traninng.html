@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="b.css" rel="stylesheet" >
+    <title>Document</title>
+    <script src="assign.js"></script>
+    <script src="history.js"></script>
+</head>
+<body>
+<div class="appointment">
+    <form method="post" action="e.php">
+        <label for="trainers">Choose Trainers:</label>
+        <select required id="trainers" name="trainers">
+<!--            <?php include 'get_trainers.php'; ?>-->
+        </select>
+        <input name="date" type="date" />
+        <input name="time" type="time" />
+        <button type="submit">Appointment</button>
+    </form>
+    <div class="history">
+        <button>Appointment History</button>
+    </div>
+    <a href="logout.php">注销</a>
+
+</div>
+
+<script>
+    // Load trainers dynamically using JavaScript
+    window.addEventListener('DOMContentLoaded', function () {
+        var trainersSelect = document.getElementById('trainers');
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'get_trainers.php', true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                trainersSelect.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    });
+</script>
+
+</body>
+</html>

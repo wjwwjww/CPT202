@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--    <link href="b.css" rel="stylesheet" >-->
+    <title>Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* 让按钮水平居中 */
+        }
+
+        button {
+            display: block;
+            margin: 10px;
+            padding: 80px 100px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width:1200px;
+
+        }
+
+        button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .maintenance {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .notification {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .statistic {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .trainer_management {
+            background-color: #555555;
+            color: white;
+        }
+        .view{
+            background-color: blanchedalmond;
+            color:white;
+        }
+
+    </style>
+</head>
+<body>
+<form method="post" action="maintenacne.php">
+<button class="maintenance">Maintenance</button>
+</form>
+<form name="notification" method="get" action="notification.php">
+<button class="notification">Send notification </button>
+</form>
+<form method="get" action="view.php">
+<button class="view">View appointment</button>
+</form>
+<form name="report" method="get" action="report.php">
+<button class="statistic">Statistic report</button>
+</form>
+<form method="get" action="trainer_management.php">
+<button class="trainer_management">Trainer managemen</button>
+</form>
+</body>
+</html>
