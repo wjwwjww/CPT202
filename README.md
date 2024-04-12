@@ -1,9 +1,9 @@
 # CPT202
 training appointment
-![image](https://github.com/wjwwjww/CPT202/assets/88242516/b3bec95b-e3bb-426e-83e7-dc8fb61639d6)
-![image](https://github.com/wjwwjww/CPT202/assets/88242516/6c1ac0e3-7d03-4fe7-a545-55b40ba60567)
-![image](https://github.com/wjwwjww/CPT202/assets/88242516/c6e8c265-4625-4205-8ddf-22abb83876ee)
-![image](https://github.com/wjwwjww/CPT202/assets/88242516/ea649989-2d64-45e6-937e-e9801e8bdde7)
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/b3bec95b-e3bb-426e-83e7-dc8fb61639d6){width=50%}
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/6c1ac0e3-7d03-4fe7-a545-55b40ba60567){width=50%}
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/c6e8c265-4625-4205-8ddf-22abb83876ee){width=50%}
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/ea649989-2d64-45e6-937e-e9801e8bdde7){width=50%}
 
 
 
