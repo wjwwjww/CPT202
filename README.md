@@ -10,6 +10,18 @@ yoonhee
 ![image](https://github.com/wjwwjww/CPT202/assets/88242516/fbe32404-856d-4aa1-b7a0-56df44cfe1c5)
 
 
+cherie
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/0af63aa9-5298-47cd-9a66-d820250343ac)
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/20cac4b8-6537-4fa0-8a57-23bb15f73d09)
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/3536dc05-5df5-4e9e-ad7b-ecfb73265484)
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/ed5ccd43-157a-40e0-87d2-398ed4ad1a8e)
+![image](https://github.com/wjwwjww/CPT202/assets/88242516/12b43699-e47d-4552-a26d-acb16a67b2ee)
+
+
+
+
+
+
 
 
 Jiawei
