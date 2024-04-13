@@ -13,7 +13,8 @@ import fitnessPage from '@/users/register/fitnessPlan.vue';
 import viewPage from '@/users/account/viewAppointmentPage.vue'
 import feedbackPage from '@/users/account/feedbackPage.vue'
 import trainersPage from '@/users/trainers/trainersPage.vue'
-
+import accountPage from '@/users/account/accountPage.vue'
+import managerPage from '@/users/manager/managerPage.vue'
 const routes = [
     {
         path: '/',
@@ -63,6 +64,15 @@ const routes = [
     {
         path: '/trainers',
         component: trainersPage
+    },
+    {
+        path: '/account',
+        component: accountPage
+    },
+    {
+        path: '/manager',
+        component: managerPage
+
     }
 
 

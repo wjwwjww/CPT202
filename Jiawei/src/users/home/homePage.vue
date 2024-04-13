@@ -1,13 +1,14 @@
 <template>
-  <nav id="navbar">
-    <ul>
-      <li><router-link to="/home">Home</router-link></li>
-      <li><router-link to="/customer">appointment</router-link></li>
+<!--  <nav id="navbar">-->
+<!--    <ul>-->
+<!--      <li><router-link to="/home">Home</router-link></li>-->
+<!--      <li><router-link to="/customer">appointment</router-link></li>-->
 
-      <li></li>
-    </ul>
-  </nav>
+<!--      <li></li>-->
+<!--    </ul>-->
+<!--  </nav>-->
 
+  <Navigate/>
   <div id="account">
     <ul>
     <li id="tologin"><router-link to="/login" class="routerdirect">login</router-link></li>
@@ -67,7 +68,10 @@
 
 <script>
 
+import Navigate from "@/users/navigatebar/navigateBar.vue";
+
 export default {
+  components: {Navigate},
   data() {
     return {
       user: {

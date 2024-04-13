@@ -21,6 +21,10 @@
           <input type="text" id="verification-code" name="verification-code" placeholder ="Enter verification code" required>
           <button type="submit" id="verify">Verify</button>
         </div>
+        <div class="enter-group invite-code-group">
+          <input type="text" id="invite-code" name="invite-code" placeholder="Enter invite code">
+
+        </div>
         <div class="form-group">
           <button @click="topassword" type="submit" id="continue">Continue</button>
         </div>

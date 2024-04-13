@@ -25,6 +25,9 @@ export default {
     };
   },
   methods:{
+    toaccount(){
+      this.$router.push("/account")
+    },
     toview(){
       this.$router.push("/viewappointment")
     },
@@ -84,7 +87,8 @@ export default {
   <div class="dropdown-menu" v-show="showdrop">
     <ul id="ul1">
       <li >退出登录</li>
-      <li @click="toview">查看预约</li>
+      <li @click="toview">view appointment</li>
+      <li @click="toaccount">Account info</li>
 
       <!-- 其他选项 -->
     </ul>
