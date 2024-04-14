@@ -3,14 +3,16 @@
   <div>
     <p>Links to shop manager functions:</p>
     <ul>
-      <li>Appointments management</li>
+      <li href="appomodifi">Appointments management</li>
       <li>Trainer management</li>
       <li>Notification</li>
       <li>Statistical report</li>
     </ul>
 
-    <h1>Appointments Modification:</h1>
-    <form id="appointmentForm" @submit.prevent="submitForm">
+    <div class="bucket1">
+      <div class="bucket2">
+    <h1 id="appomodify" @click="toggleForm">Appointments Modification:</h1>
+    <form id="appointmentForm" v-if="showForm" @submit.prevent="submitForm">
       Appointment ID: <input type="text" v-model="appointmentId" /><br />
       Customer: <input type="text" v-model="customer" /><br />
       Trainer: <input type="text" v-model="trainer" /><br />
@@ -19,9 +21,14 @@
       Time: <input type="text" v-model="time" /><br />
       <button type="submit">APPLY</button>
     </form>
+      </div>
+    </div>
 
-
-    <h1>Appointments Management</h1>
+    <br>
+    <div class="bucket1">
+      <div class="bucket2">
+    <h1  @click="showmanagement">Appointments Management</h1>
+      <div v-if="management">
     <table>
       <thead>
       <tr>
@@ -46,8 +53,7 @@
     <p>
      Details:
     </p>
-
-    <table>
+      <table>
       <thead>
       <tr>
         <th>Appointment ID</th>
@@ -69,14 +75,19 @@
       </tr>
       </tbody>
     </table>
+    </div>
+      </div>
+    </div>
 
-    <h1>Trainter Ranking Modification:</h1>
-    <div>
-      <form>
-        <!-- Form content -->
-      </form>
-      <p>Trainer's Recent Appointments:</p>
-      <h1>Trainter Ranking Modification:</h1>
+
+
+
+  <br>
+      <div class="bucket1">
+        <div class="bucket2">
+        <div id="rankmodify">
+      <h1  @click="showrankmodify">Trainter Ranking Modification:</h1>
+          <div v-if="rankmodify">
       <form>
         Trainer ID: <input type="text" /><br />
         Modification Type: <select name="Modification Type">
@@ -92,7 +103,18 @@
       </select><br />
         <input type="submit" value="APPLY"/>
       </form>
-      <p>Trainer's Recent Appointments: </p>
+      </div>
+      </div>
+      </div>
+    </div>
+    </div>
+
+    <br>
+      <div class="bucket1">
+        <div class="bucket2">
+      <p @click="showrecent">Trainer's Recent Appointments:</p>
+      <div v-if="recent">
+
       <table>
         <thead>
         <tr>
@@ -117,11 +139,39 @@
       </table>
     </div>
   </div>
+    </div>
   </div>
+
+
+
 </template>
 
 <script>
+ export default {
+   data(){
+     return {
+       showForm: false,
+       management:false,
+       recent:false,
+       rankmodify:false,
+     };
+   },
+   methods:{
+     toggleForm(){
+       this.showForm = !this.showForm;
+     },
+     showmanagement(){
+       this.management=!this.management;
+     },
+     showrecent(){
+       this.recent=!this.recent;
 
+     },
+     showrankmodify(){
+       this.rankmodify=!this.rankmodify;
+     }
+   }
+ }
 </script>
 
 <style>
@@ -226,6 +276,37 @@ ul {
 ul li {
   margin-bottom: 5px;
 }
+
+
+
+/* 当表单显示时，修改标题样式 */
+.show-form .toggle-title::after {
+  content: "▼"; /* 箭头向下 */
+}
+
+/* 当表单隐藏时，修改标题样式 */
+.toggle-title::after {
+  content: "►"; /* 箭头向右 */
+  cursor: pointer; /* 鼠标样式为手型 */
+}
+.bucket1{
+  background-color: #2c3e50;
+  padding: 10px;
+  margin: 40px;
+  border-radius: 5px;
+
+}
+#appomodify {
+  color: #cccccc;
+}
+.bucket2{
+  color: #cccccc;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+
+
 
 
 /* Additional custom styles can be added as needed */</style>
