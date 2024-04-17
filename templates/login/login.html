@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        /* Styles from your CSS */
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url("https://starry-lixu.oss-cn-hangzhou.aliyuncs.com/202209141908599.jpg") fixed no-repeat;
+            background-size: cover;
+        }
+
+        #all {
+            margin: 0;
+            background-image: url("path/to/your/image.png");
+            background-size: cover;
+            font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
+        }
+
+        .login-form {
+            width: 240px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+            background: inherit;
+            border-radius: 18px;
+            overflow: hidden; /* Hide the extra blur effect */
+            background-color: rgba(255, 255, 255, 0.8); /* Modify background color */
+        }
+
+        .login-form h2 {
+            font-size: 18px;
+            font-weight: 400;
+            color: #3d5245;
+        }
+
+        .login-form input,
+        .login-form button {
+            margin: 6px 0;
+            height: 36px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            padding: 0 14px;
+            color: #3d5245;
+        }
+    </style>
+</head>
+<body>
+<div id="all">
+    <div class="container">
+        <form action="#" class="login-form" onsubmit="event.preventDefault(); login()">
+            <p>Please login:</p>
+            <input type="text" id="username" placeholder="Username" />
+            <input type="password" id="password" placeholder="Password" />
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        axios.post('/api/login', {
+            username: username,
+            password: password
+        })
+            .then(() => {
+                // Handle successful login
+                console.log('Login successful');
+                window.location.href = '/home'; // Redirect to home page
+            })
+            .catch(error => {
+                // Handle login failure
+                console.error('Login failed:', error);
+            });
+    }
+</script>
+</body>
+</html>
