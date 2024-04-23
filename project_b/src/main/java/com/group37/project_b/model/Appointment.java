@@ -1,7 +1,7 @@
 package com.group37.project_b.model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,23 +17,23 @@ public class Appointment {
     private int trainerID;
     private int status; // 0 - new, 1 - completed, 2 - cancelled
     private int rating;
-    private LocalDate appointmentDate;
-    private LocalTime appointmentTime;
+    private LocalDateTime appointmentTime;
+    private int duration;   //in minutes
 
 
     public Appointment() {
     }
 
 
-    public Appointment(int id, int customerID, int trainerID, int status, int rating, LocalDate appointmentDate,
-            LocalTime appointmentTime) {
+    public Appointment(int id, int customerID, int trainerID, int status, int rating, LocalDateTime appointmentTime,
+    int duration) {
         this.id = id;
         this.customerID = customerID;
         this.trainerID = trainerID;
         this.status = status;
         this.rating = rating;
-        this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
+        this.duration = duration;
     }
 
 
@@ -71,6 +71,19 @@ public class Appointment {
         return status;
     }
 
+    public String getStatusText() {
+        if(this.status==0){
+            return "UNCOMPLETED";
+        }
+        else if(this.status==1){
+            return "COMPLETED";
+        }
+        else if(this.status==2){
+            return "CANCELLED";
+        }
+        return "ERROR";
+    }
+
 
     public void setStatus(int status) {
         this.status = status;
@@ -87,23 +100,28 @@ public class Appointment {
     }
 
 
-    public LocalDate getAppointmentDate() {
-        return appointmentDate;
-    }
-
-
-    public void setAppointmentDate(LocalDate appointmentDate) {
-        this.appointmentDate = appointmentDate;
-    }
-
-
-    public LocalTime getAppointmentTime() {
+    public LocalDateTime getAppointmentTime() {
         return appointmentTime;
     }
 
 
-    public void setAppointmentTime(LocalTime appointmentTime) {
+    public void setAppointmentTime(LocalDateTime appointmentTime) {
         this.appointmentTime = appointmentTime;
+    }
+
+
+    public int getDuration() {
+        return duration;
+    }
+
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+
+    public LocalDateTime getAppointmentEndTime(){
+        return this.appointmentTime.plusMinutes(this.duration);
     }
 
     
