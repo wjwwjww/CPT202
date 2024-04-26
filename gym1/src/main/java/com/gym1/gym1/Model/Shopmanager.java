@@ -1,28 +1,32 @@
 package com.gym1.gym1.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Shopmanager {
     @Id
-    private String shopManagerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int shopManagerId;
     private String shopManagerPassword;
     private String shopManagerName;
+    private String shopManagerEmail;
 
 
     
-    public Shopmanager(String shopManagerId, String shopManagerPassword, String shopManagerName) {
+    public Shopmanager(int shopManagerId, String shopManagerPassword, String shopManagerName) {
         this.shopManagerId = shopManagerId;
         this.shopManagerPassword = shopManagerPassword;
         this.shopManagerName = shopManagerName;
     }
     public Shopmanager() {
     }
-    public String getShopManagerId() {
+    public int getShopManagerId() {
         return shopManagerId;
     }
-    public void setShopManagerId(String shopManagerId) {
+    public void setShopManagerId(int shopManagerId) {
         this.shopManagerId = shopManagerId;
     }
     public String getShopManagerPassword() {
@@ -36,6 +40,12 @@ public class Shopmanager {
     }
     public void setShopManagerName(String shopManagerName) {
         this.shopManagerName = shopManagerName;
+    }
+    public String getShopManagerEmail() {
+        return shopManagerEmail;
+    }
+    public void setShopManagerEmail(String shopManagerEmail) {
+        this.shopManagerEmail = shopManagerEmail;
     }
     
     

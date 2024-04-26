@@ -6,8 +6,8 @@ import com.gym1.gym1.Model.Shopmanager;
 
 
 
-public interface shopManagerrepo extends JpaRepository<Shopmanager, String> {
-    Shopmanager findByShopManagerId(String shopManagerId);
-    boolean existsByShopManagerId(String shopManagerId);
+public interface shopManagerrepo extends JpaRepository<Shopmanager, Integer> {
+    Shopmanager findByShopManagerId(int shopManagerId);
+    boolean existsByShopManagerId(int shopManagerId);
 
 }

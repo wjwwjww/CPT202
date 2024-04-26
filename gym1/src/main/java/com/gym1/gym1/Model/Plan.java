@@ -2,10 +2,13 @@ package com.gym1.gym1.Model;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class Plan {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int planId;
     private String planName; // Silver, Gold, Diamond
     private int planDurationMonths; // 6 or 12

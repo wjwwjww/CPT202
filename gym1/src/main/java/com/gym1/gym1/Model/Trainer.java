@@ -1,6 +1,8 @@
 package com.gym1.gym1.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
@@ -8,11 +10,13 @@ import jakarta.persistence.Id;
 @Entity
 public class Trainer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int trainerId;
     private String trainerPassword;
     private String trainerName;
     private int trainerRanking;
     private String trainerIntroduction;
+    private String trainerEmail;
 
 
 
@@ -63,6 +67,12 @@ public class Trainer {
     }
     public void settrainerIntroduction(String trainerIntroduction) {
         this.trainerIntroduction = trainerIntroduction;
+    }
+    public String getTrainerEmail() {
+        return trainerEmail;
+    }
+    public void setTrainerEmail(String trainerEmail) {
+        this.trainerEmail = trainerEmail;
     }
 
 
