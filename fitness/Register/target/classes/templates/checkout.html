@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Checkout</title>
+  </head>
+  <body>
+    <h1>Checkout</h1>
+    <div>
+      <p>Plan: <span th:text="${plan}"></span></p>
+      <p>Duration: <span th:text="${duration}"></span> months</p>
+      <p>Price: $<span th:text="${price}"></span></p>
+      <p>Email: <span th:text="${email}"></span></p>
+    </div>
+    <div class="checkout">
+      <form
+        th:action="@{/processCheckout}"
+        th:object="${payingCustomer}"
+        method="POST"
+      >
+        <input type="hidden" th:name="'plan'" th:value="${plan}" />
+        <input type="hidden" th:name="'duration'" th:value="${duration}" />
+        <input type="hidden" th:name="'price'" th:value="${price}" />
+
+        <h2>Personal Details</h2>
+        <input
+          type="text"
+          th:field="*{name}"
+          placeholder="Full name"
+          required
+        /><br />
+
+        <input
+          type="tel"
+          th:field="*{phone}"
+          placeholder="Mobile number"
+          required
+        /><br />
+        <select id="gender" th:field="*{gender}" required>
+          <option value="" disabled selected>Select your gender</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option></select
+        ><br />
+        <br />
+        <br />
+        <h2>Payment Details</h2>
+        <div th:object="${paymentDetails}">
+          <input
+            type="text"
+            th:field="*{cardholderName}"
+            placeholder="Cardholder name"
+            required
+          /><br />
+          <input
+            type="text"
+            th:field="*{cardNumber}"
+            placeholder="Card number"
+            required
+          /><br />
+          <select id="expiryMonth" th:field="*{expiryMonth}" required>
+            <option value="" disabled selected>Expiry month</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option></select
+          ><br />
+          <input
+            type="text"
+            th:field="*{expiryYear}"
+            placeholder="Expiry year"
+            required
+          /><br />
+          <input
+            type="text"
+            th:field="*{cvc}"
+            placeholder="CVC/CVV"
+            required
+            pattern="\d*"
+          />
+
+          <span style="font-size: smaller">
+            <label for="saveCard">
+              <input type="checkbox" id="saveCard" name="saveCard" />
+              I agree to save this card for billing until I change or cancel my
+              membership.
+            </label> </span
+          ><br />
+          <button type="submit">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script></script>
+</html>
