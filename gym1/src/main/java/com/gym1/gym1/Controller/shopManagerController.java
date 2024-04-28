@@ -57,7 +57,7 @@ public class shopManagerController {
 
     @PostMapping("/shopManagerlogin")
     public ModelAndView shopmanagerLogin(@RequestParam String shopManagerId, @RequestParam String shopManagerPassword) {
-        Shopmanager shopmanager = ShopManagerRepo.findByShopManagerId(shopManagerId);
+        Shopmanager shopmanager = ShopManagerRepo.findByShopManagerId(Integer.parseInt(shopManagerId));
 
         if (shopmanager != null && shopmanager.getShopManagerPassword().equals(shopManagerPassword)) {
            
