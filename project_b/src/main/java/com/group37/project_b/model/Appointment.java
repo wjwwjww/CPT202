@@ -7,34 +7,46 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int customerID;
-    private int trainerID;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "trainerId")
+    private Trainer trainer;
     private int status; // 0 - new, 1 - completed, 2 - cancelled
     private int rating;
     private LocalDateTime appointmentTime;
     private int duration;   //in minutes
+    private LocalDateTime createTime;
 
 
     public Appointment() {
     }
 
 
-    public Appointment(int id, int customerID, int trainerID, int status, int rating, LocalDateTime appointmentTime,
-    int duration) {
+    
+
+    public Appointment(int id, User user, Trainer trainer, int status, int rating, LocalDateTime appointmentTime,
+            int duration, LocalDateTime createTime) {
         this.id = id;
-        this.customerID = customerID;
-        this.trainerID = trainerID;
+        this.user = user;
+        this.trainer = trainer;
         this.status = status;
         this.rating = rating;
         this.appointmentTime = appointmentTime;
         this.duration = duration;
+        this.createTime = createTime;
     }
+
+
 
 
     public int getId() {
@@ -47,23 +59,23 @@ public class Appointment {
     }
 
 
-    public int getCustomerID() {
-        return customerID;
+    public User getUser() {
+        return user;
     }
 
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 
-    public int getTrainerID() {
-        return trainerID;
+    public Trainer getTrainer() {
+        return trainer;
     }
 
 
-    public void setTrainerID(int trainerID) {
-        this.trainerID = trainerID;
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
     }
 
 
@@ -124,6 +136,15 @@ public class Appointment {
         return this.appointmentTime.plusMinutes(this.duration);
     }
 
-    
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
+
     
 }
