@@ -18,3 +18,7 @@ YTLee22:
 Jiawei21:
 >appointment side:
 >make, change, delete,view
+
+
+Yoonhee Park & Cheerie Lee :
+User Registration, Trainer Registration , Plan Purchase 
