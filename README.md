@@ -13,3 +13,8 @@ YTLee22:
   Shop manager side:
     All Appointments viewing
     Appointments Add/Edit/Delete
+
+
+Jiawei21:
+appointment side:
+make, change, delete,view
