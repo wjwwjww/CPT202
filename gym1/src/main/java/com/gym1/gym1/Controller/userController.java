@@ -75,6 +75,7 @@ public class userController {
             // User login successful
             // Redirect or return some response
             session.setAttribute("loggedInUser", user);
+
             return new ModelAndView("redirect:/UserPage");
         } else {
             // User login failed
