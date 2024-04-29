@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Form</title>
+    <link href="/static/appointment.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+
+<nav id="navbar">
+    <div id="logo-container">
+        <img src="/static/image/img_1.png" id="logo" alt="logo">
+    </div>
+    <ul>
+        <li><a href="/home">Home Page</a></li>
+        <li><a href="/appointment">Appointment</a></li>
+<!--        <li><a href="/change">Change appointmment</a></li>-->
+        <li><a href="/view">View appointmment</a></li>
+        <li><a href="/account">Account</a></li>
+    </ul>
+    <img id="nav-control" onclick="toggleNavbar()"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAARUlEQVR4nO3TOwoAIAwE0dz/WHqoTSptJYWIhR+YB+kCW40ZcEJIbbxnhl2q+Wf1XKq3hsv2MLAt6DihY/wn6DihY8AmOrJBLqA7C45ZAAAAAElFTkSuQmCC">
+</nav>
+<div id="appointment">
+
+
+    <h1>Appointment now!</h1>
+    <h3>User Email: <span id="user-email"></span></h3>
+    <div id="error-message"></div>
+    <form id="appointment-form">
+        <div id="trainer">
+            <label for="trainer">Trainer:</label>
+            <select name="trainer" id="trainer" required>
+                <option value="trainer1">trainer1</option>
+                <option value="trainer2">trainer2</option>
+                <option value="trainer3">trainer3</option>
+            </select>
+        </div>
+        <div id="datetime">
+            <label for="datetime">Date and Time:</label>
+            <input type="datetime-local" id="datetime" name="datetime" required>
+        </div>
+        <div id="duration">
+            <label for="duration">Duration:</label>
+            <input type="number" id="duration" name="duration" min="1" required>
+            <select name="duration_unit" id="duration_unit" required>
+                <option value="hours">Hours</option>
+            </select>
+        </div>
+        <div id="submit">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+<script>
+    fetch('/getUserData')
+        .then(response => response.json()) // Parse JSON response
+        .then(data => {
+            if (data.userEmail) {
+                document.getElementById('user-email').textContent = data.userEmail;
+                var userId = getUserIdByEmail(data.userEmail);
+                if (userId) {
+                    document.getElementById('appointment-form').addEventListener('submit', function (event) {
+                        event.preventDefault(); // 阻止表单默认提交行为
+                    });
+                }
+            } else {
+                console.error('Error fetching user data:', data.error);
+            }
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+
+
+
+
+
+    document.getElementById('appointment-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // 阻止表单默认提交行为
+
+        // 获取表单中的值
+        var trainer = document.getElementById('trainer').value;
+        var datetime = document.getElementById('datetime').value;
+        var duration = document.getElementById('duration').value;
+
+        // 在表单加载时获取当前时间并填充到日期时间字段中
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取当前时间
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = ('0' + (now.getMonth() + 1)).slice(-2); // 月份从0开始，需要加1，且保证两位数
+            var day = ('0' + now.getDate()).slice(-2); // 日期保证两位数
+            var hours = ('0' + now.getHours()).slice(-2); // 小时保证两位数
+            var minutes = ('0' + now.getMinutes()).slice(-2); // 分钟保证两位数
+
+            // 构建当前时间的字符串（YYYY-MM-DDTHH:MM），这是<input type="datetime-local">的格式要求
+            var currentDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
+
+            // 将当前时间设置到datetime input元素中
+            document.getElementById('datetime').value = currentDateTime;
+        });
+
+
+        // 构建表单数据
+        var formData = {
+            userId: userId,
+            trainer: trainer,
+            datetime: datetime,
+            duration: duration // 将持续时间和单位合并
+        };
+
+        // 发送 POST 请求将数据提交给服务器
+        fetch('/submitAppointment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+                if (response.ok) {
+                    // 处理成功响应
+                    console.log('Appointment submitted successfully!');
+                    // 在此处可以添加一些反馈或重定向用户到其他页面
+                } else {
+                    // 处理错误响应
+                    console.error('Failed to submit appointment:', response.status);
+                    // 在此处可以添加一些错误处理逻辑
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting appointment:', error);
+                // 在此处可以添加一些错误处理逻辑
+            });
+    });
+
+</script>
