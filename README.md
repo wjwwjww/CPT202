@@ -16,8 +16,8 @@ YTLee22:
 
 
 Jiawei21:
->appointment side:
->make, change, delete,view
+> appointment side:
+> make, change, delete,view
 
 
 Yoonhee Park & Cheerie Lee :
