@@ -9,6 +9,7 @@ import com.gym1.gym1.Repository.userRepo;
 
 import jakarta.servlet.http.HttpSession;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -164,7 +165,7 @@ public class userController {
     public String postMethodName1(@ModelAttribute UserandPlan userandplan) {
         Plan plan1 = (Plan) PlanRepo.findByPlanId(1);
         User user1 = (User) session.getAttribute("loggedInUser");
-        UserandPlan purchase1 = new UserandPlan(0, System.currentTimeMillis(), user1, plan1);
+        UserandPlan purchase1 = new UserandPlan(0,LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
             return "planAlreadyExists";
         }
@@ -178,7 +179,7 @@ public class userController {
     public String postMethodName2(@ModelAttribute UserandPlan userandplan) {
         Plan plan1 = (Plan) PlanRepo.findByPlanId(2);
         User user1 = (User) session.getAttribute("loggedInUser");
-        UserandPlan purchase1 = new UserandPlan(0, System.currentTimeMillis(), user1, plan1);
+        UserandPlan purchase1 = new UserandPlan(0, LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
             return "planAlreadyExists";
         }
@@ -192,7 +193,7 @@ public class userController {
     public String postMethodName3(@ModelAttribute UserandPlan userandplan) {
         Plan plan1 = (Plan) PlanRepo.findByPlanId(3);
         User user1 = (User) session.getAttribute("loggedInUser");
-        UserandPlan purchase1 = new UserandPlan(0, System.currentTimeMillis(), user1, plan1);
+        UserandPlan purchase1 = new UserandPlan(0, LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
             return "planAlreadyExists";
         }
@@ -205,7 +206,7 @@ public class userController {
     public String postMethodName4(@ModelAttribute UserandPlan userandplan) {
         Plan plan1 = (Plan) PlanRepo.findByPlanId(4);
         User user1 = (User) session.getAttribute("loggedInUser");
-        UserandPlan purchase1 = new UserandPlan(0, System.currentTimeMillis(), user1, plan1);
+        UserandPlan purchase1 = new UserandPlan(0, LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
             return "planAlreadyExists";
         }
@@ -219,7 +220,7 @@ public class userController {
     public String postMethodName5(@ModelAttribute UserandPlan userandplan) {
         Plan plan1 = (Plan) PlanRepo.findByPlanId(5);
         User user1 = (User) session.getAttribute("loggedInUser");
-        UserandPlan purchase1 = new UserandPlan(0, System.currentTimeMillis(), user1, plan1);
+        UserandPlan purchase1 = new UserandPlan(0,LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
             return "planAlreadyExists";
         }
@@ -232,7 +233,7 @@ public class userController {
     public String postMethodName6(@ModelAttribute UserandPlan userandplan) {
         Plan plan1 = (Plan) PlanRepo.findByPlanId(6);
         User user1 = (User) session.getAttribute("loggedInUser");
-        UserandPlan purchase1 = new UserandPlan(0, System.currentTimeMillis(), user1, plan1);
+        UserandPlan purchase1 = new UserandPlan(0, LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
             return "planAlreadyExists";
         }

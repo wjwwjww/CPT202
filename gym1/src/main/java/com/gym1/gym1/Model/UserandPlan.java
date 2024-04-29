@@ -5,13 +5,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class UserandPlan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int purchaseId;
-    private long planStartedTime;
+    private LocalDateTime planStartedTime;
 
     @ManyToOne
     private User user;
@@ -23,7 +25,7 @@ public class UserandPlan {
 
     
 
-    public UserandPlan(int purchaseId, long planStartedTime, User user, Plan plan) {
+    public UserandPlan(int purchaseId, LocalDateTime planStartedTime, User user, Plan plan) {
         this.purchaseId = purchaseId;
         this.planStartedTime = planStartedTime;
         this.user = user;
@@ -41,11 +43,11 @@ public class UserandPlan {
         this.purchaseId = purchaseId;
     }
 
-    public long getPlanStartedTime() {
+    public LocalDateTime getPlanStartedTime() {
         return planStartedTime;
     }
 
-    public void setPlanStartedTime(long planStartedTime) {
+    public void setPlanStartedTime(LocalDateTime planStartedTime) {
         this.planStartedTime = planStartedTime;
     }
 
