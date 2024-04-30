@@ -39,10 +39,10 @@ public class userController {
     @Autowired
     private planRepo PlanRepo;
 
-    @Autowired 
+    @Autowired
     private userAndplanRepo UserAndPlanRepo;
-    
-   
+
+
     @GetMapping("/Users_page")
     public String getuserPage(Model m) {
         List<User> Users = userrepo.findAll();
@@ -59,16 +59,16 @@ public class userController {
     @PostMapping("/add_User")
     public String postAddUser(@ModelAttribute User user){
         if(userrepo.existsByUserEmail(user.getuserEmail())) {
-            // Return some indication that the email already exists, 
+            // Return some indication that the email already exists,
             // you can choose to return an error message or handle it as you prefer
             return "/add_User";
         }
 
-       else{ userrepo.save(user);
-        return "success";   }
+        else{ userrepo.save(user);
+            return "success";   }
 
     }
-  
+
     @PostMapping("/userLogin")
     public ModelAndView userLogin(@RequestParam String userEmail, @RequestParam String userPassword) {
         User user = userrepo.findByUserEmail(userEmail);
@@ -88,25 +88,25 @@ public class userController {
 
     @GetMapping("/UserPage")
     public String getUserPage() {
-      
+
         return "UserPage";
     }
-    
+
     @GetMapping("/getUserData")
     @ResponseBody
     public Map<String, String> getUserData() {
-    Map<String, String> response = new HashMap<>();
-    User user = (User) session.getAttribute("loggedInUser");
-    if (user != null) {
-        response.put("userEmail", user.getuserEmail());
-    } else {
-        response.put("error", "User not logged in");
-    }
-    return response;
+        Map<String, String> response = new HashMap<>();
+        User user = (User) session.getAttribute("loggedInUser");
+        if (user != null) {
+            response.put("userEmail", user.getuserEmail());
+        } else {
+            response.put("error", "User not logged in");
+        }
+        return response;
     }
 
 
-   
+
 
 
 
@@ -116,14 +116,14 @@ public class userController {
     public String getPlan() {
         return "Plan";
     }
-    
 
-  
+
+
 
     @GetMapping("/Plan_One")
     public String purchasePlan1(Model model, @ModelAttribute Plan Plan) {
-    model.addAttribute("UserandPlan", new UserandPlan());
-    return "sixMonthSilver";
+        model.addAttribute("UserandPlan", new UserandPlan());
+        return "sixMonthSilver";
     }
 
     @GetMapping("/Plan_Two")
@@ -171,9 +171,9 @@ public class userController {
             return "planAlreadyExists";
         }
         else{
-        UserAndPlanRepo.save(purchase1);
-        
-        return "success_forPlan";}
+            UserAndPlanRepo.save(purchase1);
+
+            return "success_forPlan";}
     }
 
     @PostMapping("/Plan_Two")
@@ -185,9 +185,9 @@ public class userController {
             return "planAlreadyExists";
         }
         else{
-        UserAndPlanRepo.save(purchase1);
-        
-        return "success_forPlan";}
+            UserAndPlanRepo.save(purchase1);
+
+            return "success_forPlan";}
     }
 
     @PostMapping("/Plan_Three")
@@ -199,9 +199,9 @@ public class userController {
             return "planAlreadyExists";
         }
         else{
-        UserAndPlanRepo.save(purchase1);
-        
-        return "success_forPlan";}
+            UserAndPlanRepo.save(purchase1);
+
+            return "success_forPlan";}
     }
     @PostMapping("/Plan_Four")
     public String postMethodName4(@ModelAttribute UserandPlan userandplan) {
@@ -212,9 +212,9 @@ public class userController {
             return "planAlreadyExists";
         }
         else{
-        UserAndPlanRepo.save(purchase1);
-        
-        return "success_forPlan";}
+            UserAndPlanRepo.save(purchase1);
+
+            return "success_forPlan";}
     }
 
     @PostMapping("/Plan_Five")
@@ -226,9 +226,9 @@ public class userController {
             return "planAlreadyExists";
         }
         else{
-        UserAndPlanRepo.save(purchase1);
-        
-        return "success_forPlan";}
+            UserAndPlanRepo.save(purchase1);
+
+            return "success_forPlan";}
     }
     @PostMapping("/Plan_Six")
     public String postMethodName6(@ModelAttribute UserandPlan userandplan) {
@@ -239,9 +239,9 @@ public class userController {
             return "planAlreadyExists";
         }
         else{
-        UserAndPlanRepo.save(purchase1);
-        
-        return "success_forPlan";}
+            UserAndPlanRepo.save(purchase1);
+
+            return "success_forPlan";}
     }
 
 
@@ -250,22 +250,17 @@ public class userController {
     @GetMapping("/BookAppointment")
     public String bookAppointment() {
         User user = (User) session.getAttribute("loggedInUser");
-    
+
         // Check if the user exists in UserAndPlanRepo
         UserandPlan userAndPlan = UserAndPlanRepo.findByUser(user);
         if (userAndPlan != null) {
-          
-            return "bookAppointment"; 
+
+            return "bookAppointment";
         } else {
-           
-            return "haveToPurchasePlan"; 
+
+            return "haveToPurchasePlan";
         }
     }
-    
-
-
-    
-    
 
 
 
@@ -278,6 +273,11 @@ public class userController {
 
 
 
-    
-    
+
+
+
+
+
+
+
 }

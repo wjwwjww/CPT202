@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.gym1.gym1.Model.User;
 
-
+import java.util.Map;
 
 
 @Repository
@@ -14,7 +14,10 @@ public interface userRepo extends JpaRepository<User, Integer> {
     User findByUserEmail(String userEmail);
     boolean existsByUserEmail(String userEmail);
 
-
+//    @Query("SELECT u FROM User u WHERE u.userEmail = ?1")
+//    User findUSerByemail(String userEmail);
     @Query("SELECT u.userId FROM User u WHERE u.userEmail = ?1")
     int getUserIdByEmail(String userEmail);
+    @Query("SELECT u FROM User u WHERE u.userEmail = ?1")
+    User getUserByEmail(String email);
 }

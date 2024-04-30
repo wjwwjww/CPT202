@@ -20,6 +20,7 @@ public class Appointment {
     private Trainer trainer;
     private int status; // 0 - new, 1 - completed, 2 - cancelled
     private int rating;
+
     private LocalDateTime appointmentTime;
     private int duration;   //in minutes
     private LocalDateTime createTime;
@@ -33,6 +34,7 @@ public class Appointment {
 
     public Appointment(int id, User user, Trainer trainer, int status, int rating, LocalDateTime appointmentTime,
                        int duration, LocalDateTime createTime) {
+        System.out.println(appointmentTime);
         this.id = id;
         this.user = user;
         this.trainer = trainer;
