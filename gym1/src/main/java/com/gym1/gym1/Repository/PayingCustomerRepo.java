@@ -1,8 +1,9 @@
-package com.register.customer.repository;
+package com.gym1.gym1.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.register.customer.model.PayingCustomer;
+
+import com.gym1.gym1.Model.PayingCustomer;
 
 @Repository
 public interface PayingCustomerRepo extends JpaRepository<PayingCustomer, String> {
