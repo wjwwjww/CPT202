@@ -1,4 +1,4 @@
-package com.register.customer.model;
+package com.gym1.gym1.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
