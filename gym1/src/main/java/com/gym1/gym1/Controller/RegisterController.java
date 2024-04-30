@@ -1,4 +1,4 @@
-package com.register.customer.controller;
+package com.gym1.gym1.Controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.register.customer.model.CustomerRegister;
-import com.register.customer.model.TrainerRegister;
-import com.register.customer.repository.CustomerRegisterRepo;
-import com.register.customer.repository.TrainerRegisterRepo;
+import com.gym1.gym1.Model.CustomerRegister;
+import com.gym1.gym1.Model.TrainerRegister;
+import com.gym1.gym1.Repository.CustomerRegisterRepo;
+import com.gym1.gym1.Repository.TrainerRegisterRepo;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
