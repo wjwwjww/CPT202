@@ -1,4 +1,4 @@
-package com.register.customer.controller;
+package com.gym1.gym1.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.register.customer.model.PayingCustomer;
-import com.register.customer.model.PaymentDetails;
-import com.register.customer.model.PurchasedPlan;
-import com.register.customer.repository.PayingCustomerRepo;
-import com.register.customer.repository.PaymentDetailsRepo;
-import com.register.customer.repository.PurchasedPlanRepo;
+import com.gym1.gym1.Model.PayingCustomer;
+import com.gym1.gym1.Model.PaymentDetails;
+import com.gym1.gym1.Model.PurchasedPlan;
+import com.gym1.gym1.Repository.PayingCustomerRepo;
+import com.gym1.gym1.Repository.PaymentDetailsRepo;
+import com.gym1.gym1.Repository.PurchasedPlanRepo;
 
 import jakarta.servlet.http.HttpSession;
 
