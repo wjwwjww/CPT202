@@ -12,7 +12,7 @@ import jakarta.persistence.SequenceGenerator;
 public class Trainer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "trainergene")
-    @SequenceGenerator(sequenceName = "usergene", name="trainergene", allocationSize=1)
+    @SequenceGenerator(sequenceName = "trainergene", name="trainergene", allocationSize=1)
     private int trainerId;
     private String trainerPassword;
     private String trainerName;
