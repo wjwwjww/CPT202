@@ -3,6 +3,8 @@ package com.group37.project_b.model;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class AppointmentManagementDTO {
 
     @NotNull(message = "Customer ID is required")
@@ -22,6 +24,7 @@ public class AppointmentManagementDTO {
     private int rating;
 
     @NotNull(message = "An appointment time is required")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm:ss")
     private LocalDateTime appointmentTime;
 
     @Min(0)

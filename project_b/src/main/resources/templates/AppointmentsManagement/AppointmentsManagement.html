@@ -72,8 +72,8 @@
                     <td th:text="${Appointment.getTrainer().gettrainerName()}"></td>
                     <th th:text="${Appointment.getStatusText()}"></th>
                     <td th:text="*{Appointment.rating}"></td>
-                    <td th:text="|*{Appointment.appointmentTime} - ${Appointment.getAppointmentEndTime()}"></td>
-                    <td th:text="*{Appointment.createTime}"></td>
+                    <td th:text="*{Appointment.getTimeInterval()}"></td>
+                    <td th:text="*{Appointment.getFormattedCreateTime()}"></td>
                     <td style="white-space: nowrap">
                       <a class="btn btn-primary btn-sm" 
                         th:href="@{/Appointments_Management/update(id=*{Appointment.id})}">Edit</a>

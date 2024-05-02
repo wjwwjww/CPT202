@@ -1,7 +1,7 @@
 package com.group37.project_b.model;
 
 import java.time.LocalDateTime;
-
+import java.time.format.DateTimeFormatter;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -146,5 +146,14 @@ public class Appointment {
         this.createTime = createTime;
     }
 
+    public String getTimeInterval(){
+        DateTimeFormatter localTimeFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        return this.appointmentTime.format(localTimeFormat) +" ~ "+this.appointmentTime.plusMinutes(this.duration).format(localTimeFormat);
+    }
+    
+    public String getFormattedCreateTime(){
+        DateTimeFormatter localTimeFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSSSSSSSS");
+        return this.createTime.format(localTimeFormat);
+    }
     
 }

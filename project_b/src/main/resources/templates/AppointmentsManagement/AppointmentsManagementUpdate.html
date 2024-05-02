@@ -67,14 +67,14 @@
                         <div class="row mb-3">
                             <label class="col-sm-4 col-form-label" >Original Appointment Time</label>
                             <div class="col-sm-8">
-                                <input readonly class="form-control-plaintext" th:value="|${AM.getAppointmentTime} - ${AM.getAppointmentEndTime()}">
+                                <input readonly class="form-control-plaintext" th:value="|${AM.getTimeInterval()}">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label class="col-sm-4 col-form-label">New Appointment Time</label>
                             <div class="col-sm-8">
-                                <input type="datetime-local" th:field="${AM_DTO.appointmentTime}">
+                                <input type="datetime-local" class="form-control" th:field="${AM_DTO.appointmentTime}" >
                                 <p th:if="${#fields.hasErrors('appointmentTime')}" th:errorclass="text-danger" 
                                     th:errors="${AM_DTO.appointmentTime}"></p>
                             </div>
