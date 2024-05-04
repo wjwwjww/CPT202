@@ -50,9 +50,9 @@ public class CheckoutController {
             return "fitnessPlan";
         }
 
-        PurchasedPlan existingPlan = purchasedPlanRepo.findByUserId(userId);
-        model.addAttribute("alreadyPurchased", existingPlan != null);
-        if (existingPlan != null) {
+        PurchasedPlan validExistingPlan = purchasedPlanRepo.findByUserIdAndStatus(userId, "Valid");
+        model.addAttribute("alreadyPurchased", validExistingPlan != null);
+        if (validExistingPlan != null) {
             model.addAttribute("purchaseAlert",
                     "You have already purchased a plan and cannot purchase another.");
             return "fitnessPlan";
@@ -86,9 +86,10 @@ public class CheckoutController {
         if (userId == null) {
             return "redirect :/login";
         }
-        PurchasedPlan existingPlan = purchasedPlanRepo.findByUserId(userId);
-        if (existingPlan != null) {
-            return "redirect:/fitnessPlan?error=alreadyPurchased"; // Redirect them with an error query param
+
+        PurchasedPlan validExistingPlan = purchasedPlanRepo.findByUserIdAndStatus(userId, "Valid");
+        if (validExistingPlan != null) {
+            return "redirect:/fitnessPlan?error=alreadyPurchased"; // Redirect with an error if valid plan exists
         }
 
         Customer customer = customerRepo.findByUserId(userId);
@@ -156,7 +157,7 @@ public class CheckoutController {
 
         Date currentDate = new Date();
         if (currentDate.after(expiryDate)) {
-            purchasedPlan.setStatus("Not Valid");
+            purchasedPlan.setStatus("Invalid");
         } else {
             purchasedPlan.setStatus("Valid");
         }
