@@ -72,7 +72,7 @@ public class RegisterController {
         }
         if ("trainer".equals(userType)) {
             session.setAttribute("termsAgreed", termsAgreed);
-            return "accountCreation";
+            return "accountCreationTrainer";
         } else if ("customer".equals(userType)) {
             return "accountCreation";
         } else {
@@ -115,34 +115,50 @@ public class RegisterController {
     }
 
     @PostMapping("/accountCreation")
-    public String postAccountCreation(HttpServletRequest request,
+    public String accountCreationCustomer(HttpServletRequest request,
             HttpSession session,
             RedirectAttributes redirectAttributes) {
-        String userType = (String) session.getAttribute("userType");
-        String email = request.getParameter("email"); // Assuming email is passed as a parameter
-        String password = request.getParameter("password"); // Assuming password is also passed
-
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
         String emailValidationStatus = request.getParameter("emailValidationStatus");
-        session.setAttribute("emailValidationStatus", emailValidationStatus);
 
-        if ("trainer".equals(userType) && ("available".equals(emailValidationStatus))) {
-            Trainer trainer = new Trainer();
-
-            trainer.settrainerEmail(email);
-            trainer.settrainerPassword(password);
-            trainerRepo.save(trainer);
-            return "completion";
-        } else if ("customer".equals(userType) && ("available".equals(emailValidationStatus))) {
+        if ("available".equals(emailValidationStatus)) {
             Customer customer = new Customer();
-
             customer.setEmail(email);
             customer.setPassword(password);
             customerRepo.save(customer);
-            return "completion";
+            return "completion"; // 혹은 성공 페이지로 리다이렉트
         } else {
-            redirectAttributes.addFlashAttribute("error", "Please select a valid user type.");
-            return "redirect:/userType";
+            redirectAttributes.addFlashAttribute("error", "Email is not available.");
+            return "redirect:/accountCreation";
+        }
+    }
+
+    @PostMapping("/accountCreationTrainer")
+    public String accountCreationTrainer(HttpServletRequest request,
+            HttpSession session,
+            RedirectAttributes redirectAttributes) {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String name = request.getParameter("trainerName");
+        String ranking = request.getParameter("trainerRanking");
+        String introduction = request.getParameter("trainerIntroduction");
+        String emailValidationStatus = request.getParameter("emailValidationStatus");
+
+        if ("available".equals(emailValidationStatus)) {
+            Trainer trainer = new Trainer();
+            trainer.settrainerEmail(email);
+            trainer.settrainerPassword(password);
+            trainer.settrainerName(name);
+            trainer.settrainerRanking(Integer.parseInt(ranking));
+            trainer.settrainerIntroduction(introduction);
+            trainerRepo.save(trainer);
+            return "completion"; // 혹은 성공 페이지로 리다이렉트
+        } else {
+            redirectAttributes.addFlashAttribute("error", "Email is not available.");
+            return "redirect:/accountCreationTrainer";
         }
     }
 }
+
 
