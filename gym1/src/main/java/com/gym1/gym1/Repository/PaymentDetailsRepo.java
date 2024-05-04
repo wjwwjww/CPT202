@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.gym1.gym1.Model.PaymentDetails;
 
 @Repository
-public interface PaymentDetailsRepo extends JpaRepository<PaymentDetails, String> {
-    PaymentDetails findByEmail(String email);
-
+public interface PaymentDetailsRepo extends JpaRepository<PaymentDetails, Integer> {
+    PaymentDetails findByUserId(Integer userId);
 }
