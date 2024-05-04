@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 import com.gym1.gym1.Model.PurchasedPlan;
 
 @Repository
-public interface PurchasedPlanRepo extends JpaRepository<PurchasedPlan, String> {
-    PurchasedPlan findByEmail(String email);
+public interface PurchasedPlanRepo extends JpaRepository<PurchasedPlan, Integer> {
+    PurchasedPlan findByUserId(Integer userId);
 
+    PurchasedPlan findByUserIdAndStatus(Integer userId, String status);
 }
+
