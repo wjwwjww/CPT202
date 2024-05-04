@@ -1,13 +1,26 @@
 package com.gym1.gym1.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class CustomerRegister {
+public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userId;
     private String email;
     private String password;
+
+    @Column(nullable = true)
+    private String name;
+    @Column(nullable = true)
+    private String phone;
+    @Column(nullable = true)
+
+    private String gender;
 
     public String getEmail() {
         return email;
@@ -23,6 +36,42 @@ public class CustomerRegister {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
 }
