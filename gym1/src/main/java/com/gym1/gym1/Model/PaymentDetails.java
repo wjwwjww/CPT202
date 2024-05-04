@@ -10,11 +10,11 @@ import jakarta.persistence.OneToOne;
 @Table(name = "payment_details")
 public class PaymentDetails {
     @Id
-    private String email;
+    private Integer userId;
 
     @OneToOne
-    @JoinColumn(name = "email", referencedColumnName = "email", insertable = false, updatable = false)
-    private PayingCustomer payingCustomer;
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    private Customer customer;
 
     private String cardholderName;
     private String cardNumber;
@@ -22,20 +22,20 @@ public class PaymentDetails {
     private String expiryYear;
     private Integer cvc;
 
-    public String getEmail() {
-        return email;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public PayingCustomer getPayingCustomer() {
-        return payingCustomer;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setPayingCustomer(PayingCustomer payingCustomer) {
-        this.payingCustomer = payingCustomer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getCardholderName() {
@@ -78,5 +78,5 @@ public class PaymentDetails {
         this.cvc = cvc;
     }
 
-    // Getters and Setters
 }
+
