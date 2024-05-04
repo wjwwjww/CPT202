@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.gym1.gym1.Model.CustomerRegister;
+import com.gym1.gym1.Model.Customer;
 import com.gym1.gym1.Model.TrainerRegister;
-import com.gym1.gym1.Repository.CustomerRegisterRepo;
+import com.gym1.gym1.Repository.CustomerRepo;
 import com.gym1.gym1.Repository.TrainerRegisterRepo;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class RegisterController {
     @Autowired
     private TrainerRegisterRepo trainerRegisterRepo;
     @Autowired
-    private CustomerRegisterRepo customerRegisterRepo;
+    private CustomerRepo customerRepo;
 
     @GetMapping("/userType")
     public String getUserType() {
@@ -99,9 +99,11 @@ public class RegisterController {
 
         boolean isUsed = false;
         if ("trainer".equals(userType)) {
-            isUsed = trainerRegisterRepo.existsById(email);
+            TrainerRegister trainer = trainerRegisterRepo.findByEmail(email);
+            isUsed = trainer != null;
         } else if ("customer".equals(userType)) {
-            isUsed = customerRegisterRepo.existsById(email);
+            Customer customer = customerRepo.findByEmail(email);
+            isUsed = customer != null;
         }
 
         if (isUsed) {
@@ -131,11 +133,11 @@ public class RegisterController {
             trainerRegisterRepo.save(trainer);
             return "completion";
         } else if ("customer".equals(userType) && ("available".equals(emailValidationStatus))) {
-            CustomerRegister customer = new CustomerRegister();
+            Customer customer = new Customer();
 
             customer.setEmail(email);
             customer.setPassword(password);
-            customerRegisterRepo.save(customer);
+            customerRepo.save(customer);
             return "completion";
         } else {
             redirectAttributes.addFlashAttribute("error", "Please select a valid user type.");
