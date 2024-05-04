@@ -89,7 +89,6 @@ public class RegisterController {
         String userType = (String) session.getAttribute("userType");
         Map<String, String> response = new HashMap<>();
 
-        // 정규 표현식을 사용하여 이메일 형식 검증
         Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
         Matcher matcher = pattern.matcher(email);
         if (!matcher.matches()) {
@@ -127,7 +126,7 @@ public class RegisterController {
             customer.setEmail(email);
             customer.setPassword(password);
             customerRepo.save(customer);
-            return "completion"; // 혹은 성공 페이지로 리다이렉트
+            return "completion";
         } else {
             redirectAttributes.addFlashAttribute("error", "Email is not available.");
             return "redirect:/accountCreation";
