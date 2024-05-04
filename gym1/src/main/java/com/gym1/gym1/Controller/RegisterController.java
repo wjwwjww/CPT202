@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gym1.gym1.Model.Customer;
-import com.gym1.gym1.Model.TrainerRegister;
+import com.gym1.gym1.Model.Trainer;
 import com.gym1.gym1.Repository.CustomerRepo;
-import com.gym1.gym1.Repository.TrainerRegisterRepo;
+import com.gym1.gym1.Repository.trainerrepo;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class RegisterController {
     @Autowired
-    private TrainerRegisterRepo trainerRegisterRepo;
+    private trainerrepo trainerRepo;
     @Autowired
     private CustomerRepo customerRepo;
 
@@ -99,7 +99,7 @@ public class RegisterController {
 
         boolean isUsed = false;
         if ("trainer".equals(userType)) {
-            TrainerRegister trainer = trainerRegisterRepo.findByEmail(email);
+            Trainer trainer = trainerRepo.findByTrainerEmail(email);
             isUsed = trainer != null;
         } else if ("customer".equals(userType)) {
             Customer customer = customerRepo.findByEmail(email);
@@ -126,11 +126,11 @@ public class RegisterController {
         session.setAttribute("emailValidationStatus", emailValidationStatus);
 
         if ("trainer".equals(userType) && ("available".equals(emailValidationStatus))) {
-            TrainerRegister trainer = new TrainerRegister();
+            Trainer trainer = new Trainer();
 
-            trainer.setEmail(email);
-            trainer.setPassword(password);
-            trainerRegisterRepo.save(trainer);
+            trainer.settrainerEmail(email);
+            trainer.settrainerPassword(password);
+            trainerRepo.save(trainer);
             return "completion";
         } else if ("customer".equals(userType) && ("available".equals(emailValidationStatus))) {
             Customer customer = new Customer();
@@ -145,3 +145,4 @@ public class RegisterController {
         }
     }
 }
+
