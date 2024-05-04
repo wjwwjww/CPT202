@@ -25,6 +25,9 @@ public class Appointment {
     private int duration;   //in minutes
     private LocalDateTime createTime;
 
+    @Column(name = "appointmentEndTime")
+    private  LocalDateTime appointmentEndTime;
+
 
     public Appointment() {
     }
@@ -43,6 +46,7 @@ public class Appointment {
         this.appointmentTime = appointmentTime;
         this.duration = duration;
         this.createTime = createTime;
+
     }
 
 
@@ -112,22 +116,27 @@ public class Appointment {
 
 
     public LocalDateTime getAppointmentTime() {
+
         return appointmentTime;
     }
 
 
     public void setAppointmentTime(LocalDateTime appointmentTime) {
+
         this.appointmentTime = appointmentTime;
     }
 
 
     public int getDuration() {
+
+
         return duration;
     }
 
 
     public void setDuration(int duration) {
         this.duration = duration;
+        this.appointmentEndTime = this.appointmentTime.plusMinutes(this.duration);
     }
 
 
@@ -144,6 +153,21 @@ public class Appointment {
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
+    public void setAppointmentEndTime(LocalDateTime appointmentEndTime){
+        this.appointmentEndTime=appointmentEndTime;
+    }
+    public void getAppointmentEndTime(LocalDateTime appointmentEndTime){
+        this.appointmentEndTime=appointmentEndTime;
+    }
+
+
+
+//    private void updateAppointmentEndTime() {
+//        this.appointmentEndTime = this.appointmentTime.plusMinutes(this.duration);
+//    }
+
+
+
 
 
 }

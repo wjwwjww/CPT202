@@ -29,7 +29,7 @@ public class trainerController {
         return trainerrepo.getTrainerByid(id);
     }
 
-    
+
 
     @GetMapping("/add_Trainer")
     public String getAddTrainer(Model model){
@@ -40,7 +40,7 @@ public class trainerController {
     @PostMapping("/add_Trainer")
     public String postAddTrainer(@ModelAttribute Trainer trainer){
         if(trainerrepo.existsByTrainerEmail(trainer.gettrainerEmail())) {
-            // Return some indication that the email already exists, 
+            // Return some indication that the email already exists,
             // you can choose to return an error message or handle it as you prefer
             return "/add_Trainer";
         }
@@ -71,15 +71,15 @@ public class trainerController {
 
 
 
-   
-   
+
+
 
 
     @GetMapping("/trainerPage")
     public String AfterTrainerLogin() {
         return "trainerPage";
     }
-    
+
     @GetMapping("/getTrainerData")
     @ResponseBody
     public Map<String, String> getTrainerData() {
@@ -107,5 +107,5 @@ public class trainerController {
     }
 
 
-    
+
 }
