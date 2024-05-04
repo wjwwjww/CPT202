@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gym1.gym1.Model.Customer;
-import com.gym1.gym1.Model.TrainerRegister;
+import com.gym1.gym1.Model.Trainer;
 import com.gym1.gym1.Repository.CustomerRepo;
-import com.gym1.gym1.Repository.TrainerRegisterRepo;
+import com.gym1.gym1.Repository.trainerrepo;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
     @Autowired
-    private TrainerRegisterRepo trainerRegisterRepo;
+    private trainerrepo trainerRepo;
     @Autowired
     private CustomerRepo customerRepo;
 
@@ -36,11 +36,9 @@ public class LoginController {
         Customer customer = customerRepo.findByEmail(email);
 
         if (customer != null && customer.getPassword().equals(password)) {
-            // 성공적으로 로그인 처리
             session.setAttribute("customerEmail", customer.getEmail());
             session.setAttribute("userType", "customer");
             session.setAttribute("userId", customer.getUserId());
-
             return "main";
         } else {
             model.addAttribute("loginError", "Invalid email or password.");
@@ -55,18 +53,17 @@ public class LoginController {
             Model model,
             HttpSession session) {
 
-        TrainerRegister trainerRegister = trainerRegisterRepo.findByEmail(email);
+        Trainer trainer = trainerRepo.findByTrainerEmail(email);
 
-        if (trainerRegister != null && trainerRegister.getPassword().equals(password)) {
+        if (trainer != null && trainer.gettrainerPassword().equals(password)) {
             // 성공적으로 로그인 처리
-            session.setAttribute("trainerEmail", trainerRegister.getEmail());
+            session.setAttribute("trainerEmail", trainer.gettrainerEmail());
             session.setAttribute("userType", "trainer");
-            session.setAttribute("userId", trainerRegister.getUserId());
+            session.setAttribute("userId", trainer.gettrainerId());
             return "main";
         } else {
             model.addAttribute("loginError", "Invalid email or password.");
             return "login";
         }
     }
-}
 }
