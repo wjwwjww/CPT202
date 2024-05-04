@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.gym1.gym1.Model.CustomerRegister;
+import com.gym1.gym1.Model.Customer;
 import com.gym1.gym1.Model.TrainerRegister;
-import com.gym1.gym1.Repository.CustomerRegisterRepo;
+import com.gym1.gym1.Repository.CustomerRepo;
 import com.gym1.gym1.Repository.TrainerRegisterRepo;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,7 +19,7 @@ public class LoginController {
     @Autowired
     private TrainerRegisterRepo trainerRegisterRepo;
     @Autowired
-    private CustomerRegisterRepo customerRegisterRepo;
+    private CustomerRepo customerRepo;
 
     @GetMapping("/login")
     public String getlogin() {
@@ -33,17 +33,18 @@ public class LoginController {
             Model model,
             HttpSession session) {
 
-        CustomerRegister customerRegiser = customerRegisterRepo.findByEmail(email);
+        Customer customer = customerRepo.findByEmail(email);
 
-        if (customerRegiser != null && customerRegiser.getPassword().equals(password)) {
+        if (customer != null && customer.getPassword().equals(password)) {
             // 성공적으로 로그인 처리
-            session.setAttribute("customerEmail", customerRegiser.getEmail());
+            session.setAttribute("customerEmail", customer.getEmail());
             session.setAttribute("userType", "customer");
-            return "main"; // 성공시 리다이렉트
+            session.setAttribute("userId", customer.getUserId());
+
+            return "main";
         } else {
-            // 실패시 에러 메시지와 함께 로그인 페이지로 다시 리다이렉트
             model.addAttribute("loginError", "Invalid email or password.");
-            return "login"; // 로그인 뷰 페이지로 리다이렉트
+            return "login";
         }
     }
 
@@ -59,13 +60,13 @@ public class LoginController {
         if (trainerRegister != null && trainerRegister.getPassword().equals(password)) {
             // 성공적으로 로그인 처리
             session.setAttribute("trainerEmail", trainerRegister.getEmail());
-            session.setAttribute("userType", "trainer"); // Identify user as trainer
-
-            return "main"; // 성공시 리다이렉트
+            session.setAttribute("userType", "trainer");
+            session.setAttribute("userId", trainerRegister.getUserId());
+            return "main";
         } else {
-            // 실패시 에러 메시지와 함께 로그인 페이지로 다시 리다이렉트
             model.addAttribute("loginError", "Invalid email or password.");
-            return "login"; // 로그인 뷰 페이지로 리다이렉트
+            return "login";
         }
     }
+}
 }
