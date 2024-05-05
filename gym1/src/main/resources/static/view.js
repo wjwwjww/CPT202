@@ -2,12 +2,15 @@ fetch('/getUserData')
     .then(response => {
         if (!response.ok) {
             throw new Error('Failed to fetch user data');
+
         }
         return response.json();
     })
     .then(data => {
         if (data.error) {
             console.error('Error:', data.error);
+            alert("Please login first!");
+            window.location.href = "/login";
         } else {
             const userEmail = data.userEmail;
             console.log('User email:', userEmail);
