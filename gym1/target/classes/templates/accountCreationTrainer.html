@@ -54,7 +54,6 @@
       .form-field {
         margin-bottom: 20px;
         position: relative;
-        
       }
 
       .form-field label {
@@ -68,15 +67,18 @@
       }
 
       .form-field input[type="email"],
-      .form-field input[type="password"] {
-        width: calc(
-          100% - 20px
-        ); /* Adjust the width as needed, the 20px accounts for padding */
+      .form-field input[type="password"],
+      .form-field input[type="text"],
+      select,
+      textarea {
+        width: 100%;
         padding: 10px;
         border: 1px solid #ddd;
         border-radius: 4px;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+        font-size: 14px;
       }
-      
 
       .email-verify-group {
         display: flex;
@@ -193,15 +195,14 @@
         /* This will center the line with respect to the circle */
       }
 
-      .progressbar li.completed {/*텍스트*/
-        color: rgb(231, 76, 60); 
+      .progressbar li.completed {
+        /*텍스트*/
+        color: rgb(231, 76, 60);
       }
       .progressbar li.active {
-
         color: rgb(231, 76, 60);
       }
       .progressbar li.nonactive {
-    
         color: rgb(185, 185, 185);
       }
 
@@ -209,28 +210,28 @@
         content: none;
       }
 
-      .progressbar li.completed:before {/*박스*/
-    
+      .progressbar li.completed:before {
+        /*박스*/
+
         border-color: rgb(231, 76, 60);
         background-color: rgb(231, 76, 60);
         color: white;
       }
 
       .progressbar li.active:before {
-        border-color: rgb(231, 76, 60); 
-        background-color: #fff; 
+        border-color: rgb(231, 76, 60);
+        background-color: #fff;
         color: rgb(231, 76, 60);
       }
 
       .progressbar li.nonactive:before {
-        border-color: rgb(185, 185, 185); 
-        color: rgb(185, 185, 185); 
+        border-color: rgb(185, 185, 185);
+        color: rgb(185, 185, 185);
       }
-      .progressbar li.completed:after { /*선*/
-        background-color: rgb(231, 76, 60); 
-
+      .progressbar li.completed:after {
+        /*선*/
+        background-color: rgb(231, 76, 60);
       }
-    </style>
     </style>
   </head>
   <body>
@@ -246,15 +247,15 @@
           <li class="active">Account Creation</li>
         </ul>
       </div>
-
       <h1>Create your account</h1>
       <div class="main">
         <form
           id="create-account-form"
-          action="/accountCreation"
+          action="/accountCreationTrainer"
           method="post"
           onsubmit="return validateForm()"
         >
+          <!-- Email Verification -->
           <div class="form-field required">
             <label for="email">Email Address</label>
             <div class="email-verify-group">
@@ -263,7 +264,6 @@
                 id="email"
                 name="email"
                 placeholder="email@example.com"
-                
               />
               <button type="button" id="verify-btn" class="verify-btn">
                 Verify
@@ -272,6 +272,7 @@
             <span id="email-status" class="email-status"></span>
           </div>
 
+          <!-- Password and Confirmation -->
           <div class="form-field required">
             <label for="password">Password</label>
             <input
@@ -279,7 +280,6 @@
               id="password"
               name="password"
               placeholder="At least 8 characters"
-              
             />
             <span id="password-error" class="password-error"></span>
           </div>
@@ -290,12 +290,46 @@
               id="confirm-password"
               name="confirm-password"
               placeholder="Re-enter password"
-              
             />
             <span id="confirm-password-error" class="password-error"></span>
           </div>
-          <input type="hidden" id="emailValidationStatus" name="emailValidationStatus" value="">
-
+          <input
+            type="hidden"
+            id="emailValidationStatus"
+            name="emailValidationStatus"
+            value=""
+          />
+          <!-- Trainer Name -->
+          <div class="form-field required">
+            <label for="trainerName">Trainer Name</label>
+            <input
+              type="text"
+              id="trainerName"
+              name="trainerName"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <!-- Trainer Ranking -->
+          <div class="form-field required">
+            <label for="trainerRanking">Trainer Ranking</label>
+            <select id="trainerRanking" name="trainerRanking" required>
+              <option value="">Select a rank</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <!-- Trainer Introduction -->
+          <div class="form-field required">
+            <label for="trainerIntroduction">Trainer Introduction</label>
+            <textarea
+              id="trainerIntroduction"
+              name="trainerIntroduction"
+              placeholder="Introduce yourself"
+              required
+            ></textarea>
+          </div>
 
           <div class="form-group">
             <button type="submit">Sign Up</button>
@@ -303,7 +337,6 @@
         </form>
       </div>
     </div>
-
     <script>
       document
         .getElementById("verify-btn")
@@ -318,38 +351,40 @@
               .then((response) => response.json())
               .then((data) => {
                 var emailStatus = document.getElementById("email-status");
-                var emailValidationInput = document.getElementById("emailValidationStatus");
+                var emailValidationInput = document.getElementById(
+                  "emailValidationStatus"
+                );
 
                 if (data.status === "available") {
                   emailStatus.innerHTML =
                     "<span style='color: green;'>&#10004;</span> Email is available";
 
                   emailStatus.style.color = "green";
-                  emailValidationInput.value = "available";  // Hidden input 업데이트
+                  emailValidationInput.value = "available"; // Hidden input 업데이트
 
                   sessionStorage.setItem("emailValidationStatus", "available");
                 } else if (data.status === "used") {
                   emailStatus.innerHTML =
                     "<span style='color: red;'>&#10006;</span> Email is already in use";
                   emailStatus.style.color = "red";
-                  emailValidationInput.value = "used";  // Hidden input 업데이트
+                  emailValidationInput.value = "used"; // Hidden input 업데이트
 
                   sessionStorage.setItem("emailValidationStatus", "used");
                 } else {
                   emailStatus.innerHTML =
                     "<span style='color: red;'>&#10006;</span> Email format : example@example.com";
                   emailStatus.style.color = "red";
-                  emailValidationInput.value = "";  // Hidden input 클리어
+                  emailValidationInput.value = ""; // Hidden input 클리어
 
                   sessionStorage.removeItem("emailValidationStatus");
                 }
               })
               .catch((error) => {
                 console.error("Error:", error);
-                
               });
           }
         });
+
       document
         .getElementById("password")
         .addEventListener("blur", validatePasswordLength);
@@ -357,11 +392,12 @@
         .getElementById("confirm-password")
         .addEventListener("blur", validatePasswordMatch);
 
-        function validatePasswordLength() {
+      function validatePasswordLength() {
         const password = document.getElementById("password").value;
         const passwordError = document.getElementById("password-error");
-        if(password.length < 8) {
-          passwordError.innerHTML = "<span style='color: red;'>&#10006;</span> Password must be at least 8 characters long";
+        if (password.length < 8) {
+          passwordError.innerHTML =
+            "<span style='color: red;'>&#10006;</span> Password must be at least 8 characters long";
           passwordError.style.display = "block";
         } else {
           passwordError.innerHTML = "";
@@ -370,28 +406,31 @@
       }
 
       function validatePasswordMatch() {
-      const confirmPassword = document.getElementById("confirm-password").value;
-      const password = document.getElementById("password").value;
-      const confirmPasswordError = document.getElementById("confirm-password-error");
+        const confirmPassword =
+          document.getElementById("confirm-password").value;
+        const password = document.getElementById("password").value;
+        const confirmPasswordError = document.getElementById(
+          "confirm-password-error"
+        );
 
-      if(confirmPassword !== password) {
-        confirmPasswordError.innerHTML = "<span style='color: red;'>&#10006;</span> Passwords do not match";
-        confirmPasswordError.style.display = "block";
-      } else {
-        confirmPasswordError.innerHTML = "";
-        confirmPasswordError.style.display = "none";
+        if (confirmPassword !== password) {
+          confirmPasswordError.innerHTML =
+            "<span style='color: red;'>&#10006;</span> Passwords do not match";
+          confirmPasswordError.style.display = "block";
+        } else {
+          confirmPasswordError.innerHTML = "";
+          confirmPasswordError.style.display = "none";
+        }
       }
-}
-
 
       function validateForm() {
-        var email = document.getElementById("email").value
+        var email = document.getElementById("email").value;
         var emailValidated =
           sessionStorage.getItem("emailValidationStatus") === "available";
         var password = document.getElementById("password").value;
         var confirmPassword = document.getElementById("confirm-password").value;
 
-        if (email.length<=0){
+        if (email.length <= 0) {
           alert("Please verify your email before signing up.");
           return false;
         }
@@ -409,7 +448,6 @@
         }
         return true; // Only submit form if all checks are passed
       }
-
     </script>
   </body>
 </html>
