@@ -9,7 +9,7 @@ public interface TrainerService {
 
     List<Trainer> getAllTrainers();
 
-    Optional<Trainer> getTrainersByid(Integer id);
+//    Optional<Trainer> getTrainersByid(Integer id);
 
     List<Trainer> getTrainersByrating(Integer ranking);
 

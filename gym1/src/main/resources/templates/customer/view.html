@@ -18,11 +18,50 @@
     </ul>
 </nav>
 
+
+<script>
+    function searchAppointments() {
+        // 获取搜索框输入的关键字
+        var input = document.getElementById("searchInput");
+        var filter = input.value.toUpperCase();
+
+        // 获取表格中的所有行
+        var appointmentBody = document.getElementById("appointmentBody");
+        var rows = appointmentBody.getElementsByTagName("tr");
+
+        // 循环遍历每一行，并根据搜索关键字过滤显示
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var dataCells = row.getElementsByTagName("td");
+            var shouldShow = false;
+
+            // 检查每一行中的每一列，如果有任何一列包含搜索关键字，则显示该行
+            for (var j = 0; j < dataCells.length; j++) {
+                var cell = dataCells[j];
+                if (cell) {
+                    var textValue = cell.textContent || cell.innerText;
+                    if (textValue.toUpperCase().indexOf(filter) > -1) {
+                        shouldShow = true;
+                        break;
+                    }
+                }
+            }
+
+            // 根据 shouldShow 变量来决定是否显示当前行
+            if (shouldShow) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        }
+    }
+</script>
+
 <div id="container1">
     <h2>My Appointments</h2>
     <table class="appointment-table" id="appointmentTable">
         <thead>
-        <tr>
+        <tr onclick="reverseOrder()">
             <th>Start time</th>
             <th>Duration</th>
             <th>End time</th>
@@ -32,6 +71,45 @@
         </tr>
         </thead>
         <tbody id="appointmentBody">
+        <input type="text" id="searchInput" onkeyup="searchAppointments()" placeholder="Search for appointments...">
+
+        <script>
+            function searchAppointments() {
+                // 获取搜索框输入的关键字
+                var input = document.getElementById("searchInput");
+                var filter = input.value.toUpperCase();
+
+                // 获取表格中的所有行
+                var appointmentBody = document.getElementById("appointmentBody");
+                var rows = appointmentBody.getElementsByTagName("tr");
+
+                // 循环遍历每一行，并根据搜索关键字过滤显示
+                for (var i = 0; i < rows.length; i++) {
+                    var row = rows[i];
+                    var dataCells = row.getElementsByTagName("td");
+                    var shouldShow = false;
+
+                    // 检查每一行中的每一列，如果有任何一列包含搜索关键字，则显示该行
+                    for (var j = 0; j < dataCells.length; j++) {
+                        var cell = dataCells[j];
+                        if (cell) {
+                            var textValue = cell.textContent || cell.innerText;
+                            if (textValue.toUpperCase().indexOf(filter) > -1) {
+                                shouldShow = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // 根据 shouldShow 变量来决定是否显示当前行
+                    if (shouldShow) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                }
+            }
+        </script>
         <!-- Appointment items will be added here using JavaScript -->
         </tbody>
     </table>
@@ -40,6 +118,7 @@
 
 
 <div class="modal" id="editAppointmentModal" tabindex="-1" role="dialog">
+
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

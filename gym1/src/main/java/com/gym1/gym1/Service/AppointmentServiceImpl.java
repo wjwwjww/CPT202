@@ -80,16 +80,19 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public void updateAppointment(Appointment updatedAppointment) {
    int id= updatedAppointment.getId();
+     Appointment   originalAppointment= appointmentRepository.findById(id).get();
         updatedAppointment.setUser(appointmentRepository.findById(id).get().getUser());
    updatedAppointment.setCreateTime(appointmentRepository.findById(id).get().getCreateTime());
    updatedAppointment.setRating(appointmentRepository.findById(id).get().getRating());
  try {
+        deleteAppointment(updatedAppointment.getId());
+        createAppointment(updatedAppointment);
 
-     deleteAppointment(updatedAppointment.getId());
-     createAppointment(updatedAppointment);
  }
     catch (Exception e) {
-        throw new RuntimeException("找不到指定的预约");
+        // 出现错误时，尝试恢复原始预约数据
+        appointmentRepository.save(originalAppointment);
+        throw new RuntimeException("更新预约失败");
     }
     }
 

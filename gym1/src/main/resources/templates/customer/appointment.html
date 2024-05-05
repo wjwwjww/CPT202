@@ -201,7 +201,15 @@
                         var date = document.getElementById("myDate").value;
                         var timeSlot = btn.innerText; // 获取选择的时间段
                         console.log("date is"+date);
+                        if (!date) {
+                            alert("Please select a date.");
+                            return;
+                        }
                         console.log("timeSlot is"+timeSlot);
+                        if(timeSlot==="choose time"){
+                            alert("please choose time");
+                            return;
+                        }
 
                         // 分割时间段字符串，得到起始时间和结束时间
                         var timeParts = timeSlot.split(" - ");
@@ -260,6 +268,17 @@
                                     rating: ranking
                                 };
                                 console.log(formData);
+//                                 // 检查appointmentTime是否为空
+//                                 if (!formData.appointmentTime) {
+//                                     alert('Please select appointment time.');
+//                                     return;
+//                                 }
+//
+// // 检查duration是否为空
+//                                 if (!formData.duration) {
+//                                     alert('Please specify appointment duration.');
+//                                     return;
+//                                 }
 
 
 
@@ -278,20 +297,17 @@
                                             alert('Appointment submitted successfully!');
                                             // 在此处可以添加一些反馈或重定向用户到其他页面
                                         } else {
-
+                                            throw new Error('Appointment submission failed');
 
                                         }
                                     })
                                     .catch(error => {
                                         // 处理错误情况
                                         console.error('Error creating appointment:', error.message);
-                                        // 解析错误消息
-                                        return error.json();
-                                    })
-                                    .then(errorData => {
-                                        // 显示错误消息给用户
-                                        alert('Error creating appointment: ' + errorData.message);
+                                        alert('time conflict');
                                     });
+
+
 
                             });
                     })

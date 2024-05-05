@@ -18,10 +18,10 @@ public class TrainerServiceImpl implements TrainerService{
         return trainerRepo.findAll();
     }
 
-    @Override
-    public Optional<Trainer> getTrainersByid(Integer id) {
-        return trainerRepo.findByTrainerId(id);
-    }
+//    @Override
+//    public Optional<Trainer> getTrainersByid(Integer id) {
+//        return trainerRepo.findByTrainerId(id);
+//    }
 
     @Override
     public List<Trainer> getTrainersByrating(Integer rating) {

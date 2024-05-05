@@ -16,8 +16,8 @@ public interface trainerrepo extends JpaRepository<Trainer, Integer>{
     
     boolean existsByTrainerEmail(String trainerEmail);
 
-    @Query("SELECT t.trainerId FROM Trainer t WHERE t.trainerEmail = ?1")
-    Optional<Trainer> findByTrainerId(int trainerId);
+//    @Query("SELECT t.trainerId FROM Trainer t WHERE t.trainerEmail = ?1")
+//    Optional<Trainer> findByTrainerId(int trainerId);
 
     @Query("SELECT t FROM Trainer t WHERE t.trainerRanking = ?1")
     List<Trainer> findByTrainerRanking(Integer rating);

@@ -80,6 +80,11 @@ fetch('/getUserData')
 function displayAppointments(appointments) {
     var appointmentBody = document.getElementById("appointmentBody");
     appointmentBody.innerHTML = ""; // 清空表格内容
+
+    // 将预约数据按照预约时间排序
+    appointments.sort((a, b) => new Date(a.appointmentTime) - new Date(b.appointmentTime));
+
+
     appointments.forEach(appointment => {
         // 格式化日期时间
 
@@ -93,6 +98,16 @@ function displayAppointments(appointments) {
             "<td>" + appointment.trainer.trainerName + "</td>"+
         "<td><button onclick='editappointment(\"" +appointment.id + "\", \"" + startDateTime + "\", \"" + duration + "\", \"" + appointment.trainer+ "\")'>edit</button></td>"+
         "<td><button onclick='deleteappointment(\"" + appointment.id + "\", \"" + startDateTime + "\", \"" + endDateTime + "\", \"" + appointment.trainer.trainerName + "\")'>delete</button></td>";
+        appointmentBody.appendChild(row);
+    });
+}
+
+function reverseOrder() {
+    var appointmentBody = document.getElementById("appointmentBody");
+    var rows = Array.from(appointmentBody.getElementsByTagName("tr"));
+    rows.reverse();
+    appointmentBody.innerHTML = ""; // 清空表格内容
+    rows.forEach(row => {
         appointmentBody.appendChild(row);
     });
 }
@@ -174,11 +189,24 @@ function deleteappointment(id) {
 
             var newDate = document.getElementById("myDate1").value;
             var newTime = document.getElementById("startTimeSelect").value;
+            if (!newDate) {
+                alert("Please select a date.");
+                return;
+            }
+
+            if(!newTime){
+                alert("please choose time");
+                return;
+            }
             console.log(newDate);
             console.log(newTime);
             var dateTimeString = newDate + "T" + newTime;
-
+            if (!dateTimeString) {
+                alert("Please select a duration");
+                return;
+            }
             var dateTime = new Date(dateTimeString);
+
 
 // 获取年、月、日、小时和分钟
             var year = dateTime.getFullYear();
