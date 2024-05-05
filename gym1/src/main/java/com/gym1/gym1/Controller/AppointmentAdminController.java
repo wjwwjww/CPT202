@@ -54,32 +54,48 @@ public class AppointmentAdminController {
         int counterYear = 0;
         int totalRatingThirty = 0;
         int totalRatingYear = 0;
+        int counterCompleteThirty = 0;
+        int counterCompleteYear = 0;
         HashMap<Integer, List<Integer>> trainerThirty = new HashMap<Integer, List<Integer>>();
         HashMap<Integer, List<Integer>> trainerYear = new HashMap<Integer, List<Integer>>();
         for(Appointment a: Appointments){
             if(a.getAppointmentTime().getYear() == LocalDateTime.now().getYear()){
                 counterYear++;
-                totalRatingYear += a.getRating();
+                
                 if(!trainerYear.containsKey(a.getTrainer().gettrainerId())){
-                    trainerYear.put(a.getTrainer().gettrainerId(), Arrays.asList(0,0));
+                    /*map(trainerID: total appointments number, total rating of completed appointments, total number of completed appointments)*/
+                    trainerYear.put(a.getTrainer().gettrainerId(), Arrays.asList(0,0,0));
                 }
                 trainerYear.get(a.getTrainer().gettrainerId()).set(0, trainerYear.get(a.getTrainer().gettrainerId()).get(0)+1);
-                trainerYear.get(a.getTrainer().gettrainerId()).set(1, trainerYear.get(a.getTrainer().gettrainerId()).get(1)+a.getRating());
+
+                if(a.getStatus()==1){
+                    counterCompleteYear += 1;
+                    totalRatingYear += a.getRating();
+                    trainerYear.get(a.getTrainer().gettrainerId()).set(2, trainerYear.get(a.getTrainer().gettrainerId()).get(2)+1);
+                    trainerYear.get(a.getTrainer().gettrainerId()).set(1, trainerYear.get(a.getTrainer().gettrainerId()).get(1)+a.getRating());
+                }
 
                 if(a.getAppointmentTime().until(LocalDateTime.now(), ChronoUnit.DAYS) <= 31){
                     counterThirty++;
-                    totalRatingThirty += a.getRating();
+                    
                     if(!trainerThirty.containsKey(a.getTrainer().gettrainerId())){
-                        trainerThirty.put(a.getTrainer().gettrainerId(), Arrays.asList(0,0));
+                        /*map(trainerID: total appointments number, total rating of completed appointments, total number of completed appointments)*/
+                        trainerThirty.put(a.getTrainer().gettrainerId(), Arrays.asList(0,0,0));
                     }
                     trainerThirty.get(a.getTrainer().gettrainerId()).set(0, trainerThirty.get(a.getTrainer().gettrainerId()).get(0)+1);
-                    trainerThirty.get(a.getTrainer().gettrainerId()).set(1, trainerThirty.get(a.getTrainer().gettrainerId()).get(1)+a.getRating());
+
+                    if(a.getStatus()==1){
+                        counterCompleteThirty += 1;
+                        totalRatingThirty += a.getRating();
+                        trainerThirty.get(a.getTrainer().gettrainerId()).set(2, trainerThirty.get(a.getTrainer().gettrainerId()).get(2)+1);
+                        trainerThirty.get(a.getTrainer().gettrainerId()).set(1, trainerThirty.get(a.getTrainer().gettrainerId()).get(1)+a.getRating());
+                    }
                 }
             }
         }
 
 
-        double avgRatingThirty = (double) totalRatingThirty/counterThirty;
+        double avgRatingThirty = (double) totalRatingThirty/counterCompleteThirty;
         
 
         int trainerAppNoTotal = 0;
@@ -97,7 +113,7 @@ public class AppointmentAdminController {
 
         
 
-        double avgRatingYear = (double) totalRatingYear/counterYear;
+        double avgRatingYear = (double) totalRatingYear/counterCompleteYear;
 
         trainerAppNoTotal = 0;
 
