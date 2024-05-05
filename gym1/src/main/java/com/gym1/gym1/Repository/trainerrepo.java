@@ -13,6 +13,7 @@ import java.util.Optional;
 @Repository
 public interface trainerrepo extends JpaRepository<Trainer, Integer>{
     Trainer findByTrainerEmail(String trainerEmail);
+    
     boolean existsByTrainerEmail(String trainerEmail);
 
     @Query("SELECT t.trainerId FROM Trainer t WHERE t.trainerEmail = ?1")

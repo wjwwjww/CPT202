@@ -1,6 +1,6 @@
 package com.gym1.gym1.Model;
 import java.time.LocalDateTime;
-
+import java.time.format.DateTimeFormatter;
 
 import com.gym1.gym1.Model.Trainer;
 import com.gym1.gym1.Model.User;
@@ -158,6 +158,16 @@ public class Appointment {
     }
     public void getAppointmentEndTime(LocalDateTime appointmentEndTime){
         this.appointmentEndTime=appointmentEndTime;
+    }
+
+    public String getTimeInterval(){
+        DateTimeFormatter localTimeFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        return this.appointmentTime.format(localTimeFormat) +" ~ "+this.appointmentTime.plusMinutes(this.duration).format(localTimeFormat);
+    }
+    
+    public String getFormattedCreateTime(){
+        DateTimeFormatter localTimeFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSSSSSSSS");
+        return this.createTime.format(localTimeFormat);
     }
 
 
