@@ -39,7 +39,7 @@ public class shopManagerController {
     public String addShopmanager(@ModelAttribute Shopmanager Shopmanager) {
         if (ShopManagerRepo.existsByShopManagerEmail(Shopmanager.getShopManagerEmail())) {
             
-            return "/add_shopManager";
+            return "redirect:/add_shopManager";
         }
         else{
       ShopManagerRepo.save(Shopmanager);
@@ -62,7 +62,7 @@ public class shopManagerController {
         if (shopmanager != null && shopmanager.getShopManagerPassword().equals(shopManagerPassword)) {
            
             session.setAttribute("loggedInShopManager", shopmanager);
-            return new ModelAndView("redirect:/ShopManager_page");
+            return new ModelAndView("redirect:/Admin");
         } else {
             
             ModelAndView modelAndView = new ModelAndView("shopManagerlogin");

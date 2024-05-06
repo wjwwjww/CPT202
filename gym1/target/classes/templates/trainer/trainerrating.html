@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainer List</title>
+</head>
+<body>
+<h1>Trainer List</h1>
+<ul id="trainerList">
+    <!-- Trainer list will be populated dynamically here -->
+</ul>
+
+<!-- Form for adding new trainer -->
+<form id="addTrainerForm">
+    <label for="trainerName">Name:</label>
+    <input type="text" id="trainerName" name="trainerName" required>
+    <label for="trainerRanking">Ranking:</label>
+    <input type="number" id="trainerRanking" name="trainerRanking" required>
+    <button type="submit">Add Trainer</button>
+</form>
+
+<script>
+    // Function to handle ranking modification
+    function modifyRanking(trainerId, newRanking) {
+        fetch(`/api/trainer/${trainerId}/${newRanking}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(updatedTrainer => {
+                console.log('Ranking updated successfully:', updatedTrainer);
+                // 显示成功消息
+                alert('Ranking updated successfully');
+                // 刷新页面
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error updating ranking:', error);
+            });
+    }
+
+    // Function to add a new trainer
+    function addTrainer(trainerName, trainerRanking) {
+        fetch('/api/trainer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                trainerName: trainerName,
+                trainerRanking: trainerRanking
+            })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(newTrainer => {
+                console.log('New trainer added successfully:', newTrainer);
+                // 刷新页面
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error adding new trainer:', error);
+            });
+    }
+
+    // Function to delete a trainer
+    function deleteTrainer(trainerId) {
+        fetch('/api/deletetrainer/' + trainerId, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log('Trainer deleted successfully');
+                // 刷新页面
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error deleting trainer:', error);
+            });
+    }
+
+
+    // Fetch data from the /api/alltrainer endpoint
+    fetch('/api/alltrainer')
+        .then(response => response.json())
+        .then(trainersData => {
+            const trainerListElement = document.getElementById('trainerList');
+            trainersData.forEach(trainer => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${trainer.trainerName} - Ranking: `;
+
+                // Input field for modifying ranking
+                const rankingInput = document.createElement('input');
+                rankingInput.type = 'number';
+                rankingInput.value = trainer.trainerRanking;
+
+                rankingInput.min = "1";
+                rankingInput.max = "10";
+                rankingInput.oninput= function() {
+                    if (this.value < 1) this.value = 1;
+                    if (this.value > 10) this.value = 10;
+                };
+
+                // Button to trigger ranking modification
+                const modifyButton = document.createElement('button');
+                modifyButton.textContent = 'Modify';
+                modifyButton.addEventListener('click', () => {
+                    modifyRanking(trainer.trainerId, rankingInput.value);
+                });
+
+                // Button to delete trainer
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', () => {
+                    deleteTrainer(trainer.trainerId);
+                });
+
+                listItem.appendChild(rankingInput);
+                listItem.appendChild(modifyButton);
+                listItem.appendChild(deleteButton);
+                trainerListElement.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+    // Add event listener for submitting the form to add a new trainer
+    document.getElementById('addTrainerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const trainerName = document.getElementById('trainerName').value;
+        const trainerRanking = document.getElementById('trainerRanking').value;
+        addTrainer(trainerName, trainerRanking);
+    });
+</script>
+</body>
+</html>

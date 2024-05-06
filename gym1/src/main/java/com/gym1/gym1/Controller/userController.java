@@ -86,9 +86,21 @@ public class userController {
         }
     }
 
+    @GetMapping("/userLogout")
+    public String userLogout(){
+        User user = (User) session.getAttribute("loggedInUser");
+        if (user != null) {
+            session.removeAttribute("loggedInUser");
+        }
+        return "redirect:/login";
+    }
+
     @GetMapping("/UserPage")
     public String getUserPage() {
-
+        User user = (User) session.getAttribute("loggedInUser");
+        if (user == null) {
+            return "redirect:/login";
+        }
         return "UserPage";
     }
 
