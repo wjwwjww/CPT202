@@ -108,6 +108,13 @@
                 rankingInput.type = 'number';
                 rankingInput.value = trainer.trainerRanking;
 
+                rankingInput.min = "1";
+                rankingInput.max = "10";
+                rankingInput.oninput= function() {
+                    if (this.value < 1) this.value = 1;
+                    if (this.value > 10) this.value = 10;
+                };
+
                 // Button to trigger ranking modification
                 const modifyButton = document.createElement('button');
                 modifyButton.textContent = 'Modify';
