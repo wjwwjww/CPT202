@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import com.gym1.gym1.Model.Shopmanager;
+import com.gym1.gym1.Model.User;
 import com.gym1.gym1.Repository.shopManagerrepo;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,7 +30,7 @@ public class shopManagerController {
 
 
 
-    @GetMapping("/add_shopManager")
+/*     @GetMapping("/add_shopManager")
     public String addShopManager(Model model) {
         model.addAttribute("Shopmanager", new Shopmanager());
         return "addShopManager";
@@ -46,7 +47,7 @@ public class shopManagerController {
         
         return "success_forShopmanager";}
     }
-
+ */
 
 
     @GetMapping("/shopManagerlogin")
@@ -56,7 +57,7 @@ public class shopManagerController {
     
 
     @PostMapping("/shopManagerlogin")
-    public ModelAndView shopmanagerLogin(@RequestParam String shopManagerEmail, @RequestParam String shopManagerPassword) {
+    public ModelAndView shopManagerLogin(@RequestParam String shopManagerEmail, @RequestParam String shopManagerPassword) {
         Shopmanager shopmanager = ShopManagerRepo.findByShopManagerEmail(shopManagerEmail);
 
         if (shopmanager != null && shopmanager.getShopManagerPassword().equals(shopManagerPassword)) {
@@ -73,9 +74,18 @@ public class shopManagerController {
 
 
 
-    @GetMapping("/ShopManager_page")
+    /* @GetMapping("/ShopManager_page")
     public String shopManagerPage() {
         return "shopManager_Page";
+    } */
+
+    @GetMapping("/shopManagerLogout")
+    public String shopManagerLogout(){
+        Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+        if (shopmanager != null) {
+            session.removeAttribute("loggedInShopManager");
+        }
+        return "redirect:/shopManagerlogin";
     }
     
     

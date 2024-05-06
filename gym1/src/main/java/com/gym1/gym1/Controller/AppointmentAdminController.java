@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gym1.gym1.Model.Appointment;
 import com.gym1.gym1.Model.AppointmentManagementDTO;
+import com.gym1.gym1.Model.Shopmanager;
 import com.gym1.gym1.Repository.AppointmentRepo;
 import com.gym1.gym1.Repository.trainerrepo;
 import com.gym1.gym1.Repository.userRepo;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 ;
@@ -40,13 +42,21 @@ public class AppointmentAdminController {
     @Autowired
     private trainerrepo trainerrepo;
 
-    @GetMapping("/api/appointments")
+    @Autowired
+    private HttpSession session;
+    
+    /* @GetMapping("/api/appointments")
     public List<Appointment> getAppointments(){
         return appointmentRepo.findAll();
-    }
+    } */
 
     @GetMapping("/Admin/Appointments_Management")
     public String getAppointmentsManagementPage(Model m) {
+        Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+        if (shopmanager == null) {
+            return "redirect:/shopManagerlogin";
+        }
+
         List<Appointment> Appointments = appointmentRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));
         m.addAttribute("Appointments", Appointments);
         
@@ -134,6 +144,11 @@ public class AppointmentAdminController {
 
     @GetMapping("/Admin/Appointments_Management/create")
     public String getAppointmentsManagementCreatePage(Model m) {
+        Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+        if (shopmanager == null) {
+            return "redirect:/shopManagerlogin";
+        }
+        
         AppointmentManagementDTO AM_DTO = new AppointmentManagementDTO();
         m.addAttribute("AM_DTO", AM_DTO);
         return "/Admin/AppointmentsManagement/AppointmentsManagementCreate";
@@ -143,6 +158,10 @@ public class AppointmentAdminController {
     public String postAppointmentsManagementCreatePage(
         @Valid @ModelAttribute("AM_DTO") AppointmentManagementDTO AM_DTO, 
         BindingResult result){
+            Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+            if (shopmanager == null) {
+                return "redirect:/shopManagerlogin";
+            }
 
 
             if(!userRepo.existsById(AM_DTO.getCustomerID())){
@@ -177,6 +196,10 @@ public class AppointmentAdminController {
         Model m,
         @RequestParam int id
     ){
+        Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+        if (shopmanager == null) {
+            return "redirect:/shopManagerlogin";
+        }
         try{
             Appointment appointment = appointmentRepo.findById(id).get();
             m.addAttribute("AM", appointment);
@@ -205,6 +228,10 @@ public class AppointmentAdminController {
         @RequestParam int id,
         @Valid @ModelAttribute("AM_DTO") AppointmentManagementDTO AM_DTO, 
         BindingResult result){
+            Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+            if (shopmanager == null) {
+                return "redirect:/shopManagerlogin";
+            }
 
             try{
                 Appointment appointment = appointmentRepo.findById(id).get();
@@ -243,6 +270,10 @@ public class AppointmentAdminController {
     public String deleteAppointments(
         @RequestParam int id
     ){
+        Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+        if (shopmanager == null) {
+            return "redirect:/shopManagerlogin";
+        }
         try{
             Appointment appointmentToBeDeleted = appointmentRepo.findById(id).get();
 

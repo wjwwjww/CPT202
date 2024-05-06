@@ -3,14 +3,22 @@ package com.gym1.gym1.Controller;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.gym1.gym1.Model.Shopmanager;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
 
 public class redirect {
+    @Autowired
+    private HttpSession session;
+
     @GetMapping("/appointment")
     public String appointment() {
         return "customer/appointment.html";
@@ -59,8 +67,12 @@ public class redirect {
         return "/customer/view.html";
     }
 
-    @RequestMapping("/trainerranking")
+    @RequestMapping("/Admin/trainerRanking")
     public String trainerranking() {
+        Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+        if (shopmanager == null) {
+            return "redirect:/shopManagerlogin";
+        }
         return "/trainer/trainerrating.html";
     }
 

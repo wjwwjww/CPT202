@@ -9,11 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.gym1.gym1.Model.Shopmanager;
 import com.gym1.gym1.Model.UserandPlan;
 import com.gym1.gym1.Repository.AppointmentRepo;
 import com.gym1.gym1.Repository.trainerrepo;
 import com.gym1.gym1.Repository.userAndplanRepo;
 import com.gym1.gym1.Repository.userRepo;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminOverviewController {
@@ -29,8 +32,20 @@ public class AdminOverviewController {
     @Autowired
     private trainerrepo trainerrepo;
 
+    @Autowired
+    private HttpSession session;
+
     @GetMapping("/Admin")
     public String getAppointmentsManagementPage(Model m) {
+
+        Shopmanager shopmanager = (Shopmanager) session.getAttribute("loggedInShopManager");
+        if (shopmanager == null) {
+            return "redirect:/shopManagerlogin";
+        }
+
+        m.addAttribute("ShopManagerName", shopmanager.getShopManagerName());
+
+
         List<UserandPlan> UserandPlans = userAndplanRepo.findAll(Sort.by(Sort.Direction.DESC,"planStartedTime"));
 
         long userCount = userRepo.count();
