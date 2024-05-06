@@ -59,6 +59,10 @@ public class redirect {
         return "/customer/view.html";
     }
 
+    @RequestMapping("/trainerranking")
+    public String trainerranking() {
+        return "/trainer/trainerrating.html";
+    }
 
 
 

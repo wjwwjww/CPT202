@@ -99,5 +99,37 @@ private userRepo userrepo;
         appointmentService.deleteAppointment(id);
         return ResponseEntity.ok().build();
     }
+    @GetMapping("/alltrainer")
+    public List<Trainer> getAllTrainer(){
+        return trainerServicel.getAllTrainers();
+    }
+    @PutMapping("/trainer/{trainerId}/{ranking}")
+    public ResponseEntity<?> changeTrainerRanking(@PathVariable Integer trainerId, @PathVariable Integer ranking) {
+        Trainer trainer = trainerServicel.getTrainerByid(trainerId);
+        if (trainer != null) {
+            trainer.settrainerRanking(ranking);
+            trainerServicel.changeRating(trainer);
+            return ResponseEntity.ok(trainer); // 返回更新后的训练师对象
+        } else {
+            return ResponseEntity.notFound().build(); // 没有找到相关的训练师，返回404
+        }
+    }
+
+    @DeleteMapping("/deletetrainer/{trainerId}")
+    public ResponseEntity<?> deleteTrainer(@PathVariable Integer trainerId) {
+        // Call your service method to delete the trainer
+        boolean deleted = trainerServicel.deletetrainer(trainerId);
+        if (deleted) {
+            return ResponseEntity.ok("Trainer deleted successfully");
+        } else {
+            System.out.println("Trainer not found");
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+
+
+
 }
 

@@ -32,4 +32,21 @@ public class TrainerServiceImpl implements TrainerService{
     public Trainer getTrainerByid(Integer id) {
        return trainerRepo.getTrainerByid(id);
     }
+
+    @Override
+    public void changeRating(Trainer trainer) {
+        trainerRepo.save(trainer);
+    }
+
+    @Override
+    public boolean deletetrainer(Integer trainerId) {
+        if(trainerRepo.getTrainerByid(trainerId)!=null){
+            trainerRepo.deleteById(trainerId);
+            return true;
+        }
+
+        return false;
+    }
+
+
 }

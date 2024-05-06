@@ -23,4 +23,8 @@ public interface trainerrepo extends JpaRepository<Trainer, Integer>{
     List<Trainer> findByTrainerRanking(Integer rating);
     @Query("SELECT t FROM Trainer t WHERE t.trainerId = ?1")
     Trainer getTrainerByid(int id);
+    @Query("SELECT t FROM Trainer t")
+    List<Trainer> findAll();
+
+
 }

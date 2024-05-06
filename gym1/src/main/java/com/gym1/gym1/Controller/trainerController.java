@@ -1,8 +1,10 @@
 package com.gym1.gym1.Controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.gym1.gym1.Service.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,8 @@ public class trainerController {
     private trainerrepo trainerrepo;
     @Autowired
     private HttpSession session;
+    @Autowired
+    private TrainerService trainerService;
 
     @GetMapping("/gettrainerbyid/{id}")
     public Trainer getTrainerById(@PathVariable Integer id) {
@@ -67,6 +71,7 @@ public class trainerController {
             return modelAndView;
         }
     }
+
 
 
 

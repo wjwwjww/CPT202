@@ -14,4 +14,9 @@ public interface TrainerService {
     List<Trainer> getTrainersByrating(Integer ranking);
 
     Trainer getTrainerByid(Integer id);
+
+
+    void changeRating(Trainer trainer);
+
+    boolean deletetrainer(Integer trainerId);
 }
