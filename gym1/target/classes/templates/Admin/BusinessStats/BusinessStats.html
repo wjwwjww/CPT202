@@ -14,7 +14,7 @@
         <style>
           .echartContainer{
             width: 45%;
-            height:500px;
+            height:325px;
             display: inline-block;
           }
 
@@ -130,7 +130,7 @@
                     var planRevenuePercentChangeChartOption ={
                         title:{
                             show: true,
-                            text: 'Revenue for last 12 Months',
+                            text: '% Revenue Change for last 12 Months',
                             textStyle: {
                                 fontSize:18
                             }
@@ -188,7 +188,7 @@
                         <div class="card border-3 bg-light">
                             <div class="card-body py-4">
                                 <p class="mb-1 my-3 fw-bold text-start">
-                                    Percentage Increase of Last Month Revenue
+                                    %Change of Last Month Revenue
                                 </p>
                                 <h4 class="mb-2 mx-2 fw-bold text-success text-end" th:text="${planRevenuePercentChange[9]} + '%'"></h4>
                             </div>

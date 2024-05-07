@@ -9,14 +9,6 @@
 
         <link rel="stylesheet" th:href="@{/css/ShopManagerSideBarStyle.css}">
         
-
-        <style>
-          .echartContainer{
-            width: 32%;
-            height:350px;
-            display: inline-block;
-          }
-        </style>
     </head>
 
     <body>
@@ -70,18 +62,18 @@
                         <div class="mb-3">
                             
                             <h1 class="fw-bold mb-3 my-4">Hello, </h1>
-                            <h2 class="fw-bold mb-3 mx-4 fst-italic text-success" style="display: inline-block;" th:text="${ShopManagerName}"></h2>
+                            <h2 class="fw-bold mb-3 mx-5 fst-italic text-success" style="display: inline-block;" th:text="${ShopManagerName}"></h2>
                             <h1 class="fw-bolder fs-1" style="display: inline-block;">!</h1>
 
-                            <hr class="hr" style="width: 90%; border: 0;height: 5px;background: #00796B;background-image: linear-gradient(to right, #00796B, #00796B, #fff);"/>
+                            <hr class="hr my-3" style="width: 90%; border: 0;height: 5px;background: #00796B;background-image: linear-gradient(to right, #00796B, #00796B, #fff);"/>
                             
-                            <h2 class="fw-bold mb-3 mx-3 my-5">Currently we have:</h2>
+                            <h3 class="fw-bold mb-3 mx-3 my-3">Currently we have:</h3>
 
-                            <div class="row mx-3 my-3 align-items-end">
+                            <div class="row mx-3 my-1 align-items-end">
                                 <div class="card border-3 border-success mx-5 my-4 bg-light" style="width: 30rem;">
                                     <div class="card-body py-4">
-                                        <p class="mb-2 fw-bold text-success mx-5" style="font-size: 75px;" th:text="${activePlansCounter}"></p>
-                                        <p class="mb-2 fw-bold text-end" style="font-size: 45px;">
+                                        <p class="mb-2 fw-bold text-success mx-5" style="font-size: 50px;" th:text="${activePlansCounter}"></p>
+                                        <p class="mb-2 fw-bold text-end" style="font-size: 25px;">
                                             Active Plans!
                                         </p>
                                     </div>
@@ -97,7 +89,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="hr my-5" style="margin: auto; width: 80%; border: 0;height: 3px;background: #333; background-image: linear-gradient(to right, #ccc, #333, #ccc);"/>
+                            <hr class="hr my-3" style="width: 70%; border: 0;height: 2px;background: #333; background-image: linear-gradient(to right, #ccc, #333, #ccc);"/>
 
                             <h2 class="fw-bold mb-3 mx-5 my-3">alongside with:</h2>
 
