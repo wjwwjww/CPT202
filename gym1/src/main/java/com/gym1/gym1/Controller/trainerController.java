@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gym1.gym1.Model.Trainer;
+import com.gym1.gym1.Model.User;
 import com.gym1.gym1.Repository.trainerrepo;
 
 import jakarta.servlet.http.HttpSession;
 
 
 
-@RestController
+@Controller
 public class trainerController {
 
     @Autowired
@@ -38,7 +39,7 @@ public class trainerController {
     @GetMapping("/add_Trainer")
     public String getAddTrainer(Model model){
         model.addAttribute("Trainer", new Trainer());
-        return "addTrainer";
+        return "/addTrainer";
     }
 
     @PostMapping("/add_Trainer")
@@ -72,7 +73,14 @@ public class trainerController {
         }
     }
 
-
+    @GetMapping("/trainerLogout")
+    public String trainerLogout(){
+        Trainer trainer = (Trainer) session.getAttribute("loggedInTrainer");
+        if (trainer != null) {
+            session.removeAttribute("loggedInTrainer");
+        }
+        return "redirect:/Main_page";
+    }
 
 
 
@@ -82,7 +90,11 @@ public class trainerController {
 
     @GetMapping("/trainerPage")
     public String AfterTrainerLogin() {
-        return "trainerPage";
+        Trainer trainer = (Trainer) session.getAttribute("loggedInTrainer");
+        if (trainer == null){
+            return "/main_page";
+        }
+        return "/trainerPage.html";
     }
 
     @GetMapping("/getTrainerData")

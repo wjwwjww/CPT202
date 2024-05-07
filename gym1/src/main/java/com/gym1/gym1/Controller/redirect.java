@@ -52,7 +52,7 @@ public class redirect {
 
     @RequestMapping("/login")
     public String login() {
-        return "/main_page.html";
+        return "redirect:/Main_page";
     }
     @RequestMapping("/viewappointment")
     public String viewappointment() {
