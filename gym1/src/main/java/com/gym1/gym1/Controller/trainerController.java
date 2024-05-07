@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.gym1.gym1.Service.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,6 +38,10 @@ public class trainerController {
 
 
 
+
+
+
+
     @GetMapping("/getTrainerData")
     @ResponseBody
     public Map<String, String> getTrainerData() {
@@ -48,6 +53,19 @@ public class trainerController {
         response.put("error", "Trainer not logged in");
     }
     return response;
+    }
+
+    @GetMapping("/getTrainerid")
+    @ResponseBody
+    public Map<String, Integer> getTrainerid() {
+        Map<String, Integer> response = new HashMap<>();
+        Trainer trainer = (Trainer) session.getAttribute("loggedInTrainer");
+        if (trainer != null) {
+            response.put("trainerid", trainer.gettrainerId());
+        } else {
+            response.put("error", -1);
+        }
+        return response;
     }
 
     @GetMapping("/getTrainerData1")

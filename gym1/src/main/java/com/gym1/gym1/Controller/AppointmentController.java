@@ -127,6 +127,11 @@ private userRepo userrepo;
         }
     }
 
+    @GetMapping("/getappointment/trainer/{id}")
+    public List<Appointment> getAppointmentByTrainerId(@PathVariable Integer id) {
+        return appointmentService.getAppointmentByTrainerId(id);
+    }
+
 
 
 

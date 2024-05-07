@@ -5,81 +5,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbf98ea9-ed18-40fa-8b8d-08b1947d6208" name="更改" comment="Update for viewing trainer list, ShopManager-side">
-      <change afterPath="$PROJECT_DIR$/../fitness/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fitness/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fitness/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fitness/.idea/fitness.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fitness/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fitness/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fitness/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fitness/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/hometest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AppointmentController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/CheckoutController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/RegisterController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/UsersController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/redirect.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Appointment.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Customer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/PaymentDetails.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/PurchasedPlan.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/AppointmentRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/CustomerRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/PaymentDetailsRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/PurchasedPlanRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/AppointmentService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/AppointmentServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/PlanService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/PlanServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/TrainerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/TrainerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UseService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserAndPlanService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserAndPlanServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/account.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/appointment.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/appointment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img_6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img_7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/image/img_8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/view.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/view.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Home/Home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Home/trainer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/agreement.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/checkout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/completion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/customer/account.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/customer/appointment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/customer/feedback.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/customer/time_selece_Component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/customer/view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/customer/viewappointment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/fitnessPlan.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/hometest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/manager/manager.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/userType.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/trainer/trainerview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_4_29__12_31____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_4_29__18_01____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2024_4_29,_12_31_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2024_4_29,_18_01_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2024_4_29,_18_01_取消提交了更改_[更改]/userController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Repository/trainerrepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Repository/trainerrepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Controller/AppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Controller/AppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Controller/redirect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Controller/redirect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Controller/trainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Controller/trainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Model/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Repository/AppointmentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Repository/AppointmentRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/AppointmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/AppointmentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/AppointmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/AppointmentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/TrainerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/TrainerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/TrainerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/TrainerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/view.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customer/appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/customer/appointment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customer/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/customer/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/trainerPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/trainerPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AdminOverviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AdminOverviewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AppointmentAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AppointmentAdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AppointmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/BusinessStatsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/BusinessStatsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/CheckoutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/RegisterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/TrainerPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/TrainerPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/UsersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/main_pageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/main_pageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/purchasePlanController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/purchasePlanController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/redirect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/redirect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/shopManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/shopManagerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/trainerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/trainerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/userController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/userController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Gym1Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Gym1Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Appointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Appointment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/AppointmentManagementDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/AppointmentManagementDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/PaymentDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/PaymentDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Plan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Plan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/PurchasedPlan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/PurchasedPlan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Shopmanager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Shopmanager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Trainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Trainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/UserandPlan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/UserandPlan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/AppointmentRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/AppointmentRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/CustomerRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/CustomerRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/PaymentDetailsRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/PaymentDetailsRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/PurchasedPlanRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/PurchasedPlanRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/planRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/planRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/shopManagerrepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/shopManagerrepo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/trainerrepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/trainerrepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/userAndplanRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/userAndplanRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/userRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/userRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/AppointmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/AppointmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/AppointmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/AppointmentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/PlanService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/PlanService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/PlanServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/PlanServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/TrainerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/TrainerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/TrainerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/TrainerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserAndPlanService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserAndPlanService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserAndPlanServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserAndPlanServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/customer/appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/customer/appointment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/trainerPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/trainerPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gym1/gym1/Gym1ApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/gym1/gym1/Gym1ApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,32 +128,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.Gym1Application.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/wangjiawei/Documents/gym1/CPT202/gym1/src/main/java/com/gym1/gym1/Repository",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Gym1Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/wangjiawei/Documents/gym1/CPT202/gym1/src/main/java/com/gym1/gym1/Repository&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Repository" />
@@ -213,6 +206,7 @@
       <workItem from="1714724656368" duration="25197000" />
       <workItem from="1714835487125" duration="4248000" />
       <workItem from="1714878703484" duration="7369000" />
+      <workItem from="1715065111003" duration="12396000" />
     </task>
     <task id="LOCAL-00001" summary="Update for viewing trainer list, ShopManager-side">
       <option name="closed" value="true" />

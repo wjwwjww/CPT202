@@ -25,8 +25,10 @@ public class Appointment {
     private int duration;   //in minutes
     private LocalDateTime createTime;
 
-    @Column(name = "appointmentEndTime")
-    private  LocalDateTime appointmentEndTime;
+
+    private LocalDateTime appointmentEndTime;
+
+
 
 
     public Appointment() {
@@ -139,10 +141,7 @@ public class Appointment {
         this.appointmentEndTime = this.appointmentTime.plusMinutes(this.duration);
     }
 
-
-    public LocalDateTime getAppointmentEndTime(){
-        return this.appointmentTime.plusMinutes(this.duration);
-    }
+//
 
 
     public LocalDateTime getCreateTime() {
@@ -153,18 +152,24 @@ public class Appointment {
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
-    public void setAppointmentEndTime(LocalDateTime appointmentEndTime){
-        this.appointmentEndTime=appointmentEndTime;
+
+
+    public LocalDateTime getAppointmentEndTime(){
+        return this.appointmentTime.plusMinutes(this.duration);
     }
-    public void getAppointmentEndTime(LocalDateTime appointmentEndTime){
-        this.appointmentEndTime=appointmentEndTime;
+    public LocalDateTime setAppointmentEndTime(){
+        return this.appointmentTime.plusMinutes(this.duration);
     }
+
+//    public void getAppointmentEndTime(LocalDateTime appointmentEndTime){
+//        this.appointmentEndTime=appointmentEndTime;
+//    }
 
     public String getTimeInterval(){
         DateTimeFormatter localTimeFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
         return this.appointmentTime.format(localTimeFormat) +" ~ "+this.appointmentTime.plusMinutes(this.duration).format(localTimeFormat);
     }
-    
+
     public String getFormattedCreateTime(){
         DateTimeFormatter localTimeFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSSSSSSSS");
         return this.createTime.format(localTimeFormat);

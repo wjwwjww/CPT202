@@ -346,6 +346,7 @@
 
 
     function gettrainerByid(id) {
+        console.log('Fetching trainer by ID:', id)
         return new Promise((resolve, reject) => {
             fetch('/gettrainerbyid/' + id)
                 .then(response => response.json())

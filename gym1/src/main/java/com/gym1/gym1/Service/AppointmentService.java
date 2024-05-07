@@ -29,5 +29,7 @@ public interface AppointmentService {
 
 
     List<Appointment> getAppointmentsByid(Integer id);
+
+    List<Appointment> getAppointmentByTrainerId(Integer id);
 }
 

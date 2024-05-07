@@ -103,4 +103,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     public List<Appointment> getAppointmentsByid(Integer id) {
         return appointmentRepository.findAppointmentByid(id);
     }
+
+    @Override
+    public List<Appointment> getAppointmentByTrainerId(Integer id) {
+        return appointmentRepository.findappointmentBytrainerid(id);
+    }
 }
