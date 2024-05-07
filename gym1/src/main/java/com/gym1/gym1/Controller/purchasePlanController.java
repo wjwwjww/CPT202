@@ -39,7 +39,7 @@ private planRepo PlanRepo;
         plans.add(plan4);
         Plan plan5 = new Plan(5, "Diamond Plan for 6 Months", 6, 5, 250);
         plans.add(plan5);
-        Plan plan6 = new Plan(6, "Diamond Plan for 12 Months", 6, 5, 300);
+        Plan plan6 = new Plan(6, "Diamond Plan for 12 Months", 12, 5, 300);
         plans.add(plan6);
 
         PlanRepo.save(plan1);
