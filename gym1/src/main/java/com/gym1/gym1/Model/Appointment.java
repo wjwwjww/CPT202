@@ -26,7 +26,7 @@ public class Appointment {
     private LocalDateTime createTime;
 
 
-    private LocalDateTime appointmentEndTime;
+//    private LocalDateTime appointmentEndTime;
 
 
 
@@ -138,7 +138,7 @@ public class Appointment {
 
     public void setDuration(int duration) {
         this.duration = duration;
-        this.appointmentEndTime = this.appointmentTime.plusMinutes(this.duration);
+//        this.appointmentEndTime = this.appointmentTime.plusMinutes(this.duration);
     }
 
 //
@@ -153,13 +153,13 @@ public class Appointment {
         this.createTime = createTime;
     }
 
-
-    public LocalDateTime getAppointmentEndTime(){
-        return this.appointmentTime.plusMinutes(this.duration);
-    }
-    public LocalDateTime setAppointmentEndTime(){
-        return this.appointmentTime.plusMinutes(this.duration);
-    }
+//
+//    public LocalDateTime getAppointmentEndTime(){
+//        return this.appointmentTime.plusMinutes(this.duration);
+//    }
+//    public LocalDateTime setAppointmentEndTime(){
+//        return this.appointmentTime.plusMinutes(this.duration);
+//    }
 
 //    public void getAppointmentEndTime(LocalDateTime appointmentEndTime){
 //        this.appointmentEndTime=appointmentEndTime;

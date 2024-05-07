@@ -1,6 +1,7 @@
 package com.gym1.gym1.Service;
 
 import com.gym1.gym1.Model.Appointment;
+import com.gym1.gym1.Model.Trainer;
 import com.gym1.gym1.Model.User;
 import com.gym1.gym1.Repository.AppointmentRepo;
 import com.gym1.gym1.Repository.trainerrepo;
@@ -33,32 +34,68 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Appointment createAppointment(Appointment appointment) {
-        try{
+        try {
+            User user = appointment.getUser();
+            Trainer trainer = appointment.getTrainer();
+            LocalDateTime start = appointment.getAppointmentTime();
+            LocalDateTime end = start.plusMinutes(appointment.getDuration());
+            List<Object[]> result1 = appointmentRepository.getAllLocalTimeAndDuration(user);
+            List<Object[]> result2 = appointmentRepository.getAllLocalTimeAndDuration(trainer);
 
-        LocalDateTime start = appointment.getAppointmentTime();
-        LocalDateTime end = start.plusMinutes(appointment.getDuration());
-        int userid=appointment.getUser().getuserId();
-        int trainerid=appointment.getTrainer().gettrainerId();
-        List<Appointment> conflictingAppointments = appointmentRepository.findByUserAndAppointmentTimeBetween(appointment.getUser(), start, end);
-        List<Appointment> conflictingAppointments2 = appointmentRepository.findByTrainerAndAppointmentTimeBetween(appointment.getTrainer(), start,end);
-        List<Appointment> conflictingAppointments3 = appointmentRepository.findByUserAndAppointmentTimeBetween(appointment.getUser(), start);
-        List<Appointment> conflictingAppointments4 = appointmentRepository.findByTrainerAndAppointmentTimeBetween(appointment.getTrainer(), start);
-        List<Appointment> conflictingAppointments5 = appointmentRepository.findByUserAndAppointmentTimeBetween(appointment.getUser(), end);
-        List<Appointment> conflictingAppointments6 = appointmentRepository.findByTrainerAndAppointmentTimeBetween(appointment.getTrainer(), end);
-            List<Appointment> existingAppointments7 = appointmentRepository.findByUserAppointmentTimesame(appointment.getUser(),start, end);
-            if(!existingAppointments7.isEmpty()){
+            for (Object[] objects : result1) {
+                LocalDateTime start1 = (LocalDateTime) objects[0];
+
+                LocalDateTime end1 = start1.plusMinutes((int) objects[1]);
+//                System.out.println("start1"+start1);
+//                System.out.println("end1"+end1);
+                if (    (start.isAfter(start1) && start.isBefore(end1)) ||
+                        (end.isAfter(start1) && end.isBefore(end1)) ||
+                        (start.isBefore(start1) && end.isAfter(end1)) ||
+                        ((start.isEqual(start1)) && (end.isEqual(end1))) ||
+                        ((start.isEqual(end1)) && (end.isEqual(start1)))
+                ) {
+                    throw new RuntimeException("预约时间与现有预约冲突，请选择其他时间。");
+
+                }
+            }
+                for (Object[] object : result2) {
+                    LocalDateTime start2 = (LocalDateTime) object[0];
+                    LocalDateTime end2 = start2.plusMinutes((int) object[1]);
+                    if ((start.isAfter(start2) && start.isBefore(end2)) ||
+                            (end.isAfter(start2) && end.isBefore(end2)) ||
+                            (start.isBefore(start2) && end.isAfter(end2)) ||
+                            ((start.isEqual(start2)) && (end.isEqual(end2))) ||
+                            ((start.isEqual(end2)) && (end.isEqual(start2)))
+                    ) {
+                        throw new RuntimeException("预约时间与现有预约冲突，请选择其他时间。");
+
+                    }
+                }
+            }catch (Exception e){
                 throw new RuntimeException("预约时间与现有预约冲突，请选择其他时间。");
             }
-        if (!conflictingAppointments.isEmpty()||!conflictingAppointments2.isEmpty()||!conflictingAppointments3.isEmpty()||!conflictingAppointments4.isEmpty()||!conflictingAppointments5.isEmpty()||!conflictingAppointments6.isEmpty()) {
-            throw new RuntimeException("预约时间与现有预约冲突，请选择其他时间。");
-        }
-        }
-        catch (Exception e){
-            throw new RuntimeException("预约时间与现有预约冲突，请选择其他时间。");
-        }
-
         return appointmentRepository.save(appointment);
     }
+
+
+
+//                List<Appointment> conflictingAppointments = appointmentRepository.findByUserAndAppointmentTimeBetween(appointment.getUser(), start, end);
+//                List<Appointment> conflictingAppointments2 = appointmentRepository.findByTrainerAndAppointmentTimeBetween(appointment.getTrainer(), start, end);
+//                List<Appointment> conflictingAppointments3 = appointmentRepository.findByUserAndAppointmentTimeBetween(appointment.getUser(), start);
+//                List<Appointment> conflictingAppointments4 = appointmentRepository.findByTrainerAndAppointmentTimeBetween(appointment.getTrainer(), start);
+//                List<Appointment> conflictingAppointments5 = appointmentRepository.findByUserAndAppointmentTimeBetween(appointment.getUser(), end);
+//                List<Appointment> conflictingAppointments6 = appointmentRepository.findByTrainerAndAppointmentTimeBetween(appointment.getTrainer(), end);
+//                List<Appointment> existingAppointments7 = appointmentRepository.findByUserAppointmentTimesame(appointment.getUser(), start, end);
+//                if (!existingAppointments7.isEmpty()) {
+//                    throw new RuntimeException("预约时间与现有预约冲突，请选择其他时间。");
+//                }
+//                if (!conflictingAppointments.isEmpty() || !conflictingAppointments2.isEmpty() || !conflictingAppointments3.isEmpty() || !conflictingAppointments4.isEmpty() || !conflictingAppointments5.isEmpty() || !conflictingAppointments6.isEmpty()) {
+//                    throw new RuntimeException("预约时间与现有预约冲突，请选择其他时间。");
+//                }
+
+
+
+
 
 
 
