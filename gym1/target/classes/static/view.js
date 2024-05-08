@@ -89,9 +89,15 @@ function displayAppointments(appointments) {
         // 格式化日期时间
 
         var startDateTime = formatDateTime(new Date(appointment.appointmentTime));
-        var endDateTime = formatDateTime(new Date(appointment.appointmentEndTime));
+        // 将结束时间转换为日期对象
+        var endDateTime = new Date(appointment.appointmentTime);
+
+// 将持续时间添加到结束时间
+        endDateTime.setMinutes(endDateTime.getMinutes() + appointment.duration);
+        endDateTime=formatDateTime(endDateTime);
         var duration = calculateDuration(startDateTime, endDateTime);
         var row = document.createElement("tr");
+
         row.innerHTML = "<td>" + startDateTime + "</td>" +
             "<td>" + duration + "</td>" +
             "<td>" + endDateTime + "</td>" +
@@ -167,18 +173,21 @@ function deleteappointment(id) {
 // 点击编辑按钮显示模态框
     function editappointment(id, startDateTime, duration, trainer) {
 
-        // 将原始预约信息填入模态框
-        // document.getElementById('editStartDateTime').value = startDateTime;
-        // document.getElementById('editDuration').value = duration;
+        // 获取当前日期
+        var currentDate = new Date();
 
-        //默认trainer
-        // var selectElement = document.getElementById('editTrainerName');
-        // for (var i = 0; i < selectElement.options.length; i++) {
-        //     if (selectElement.options[i].value === trainerName) {
-        //         selectElement.options[i].selected = true;
-        //         break;
-        //     }
-        // }
+        // 获取预约开始日期
+        var appointmentStartDate = new Date(startDateTime);
+
+        // 计算当前日期之后7天的日期
+        var sevenDaysAfter = new Date();
+        sevenDaysAfter.setDate(currentDate.getDate() + 7);
+
+        // 检查如果预约开始日期在当前日期之后7天之前，则不允许修改
+        if (appointmentStartDate < sevenDaysAfter) {
+            alert("You cannot edit appointments that are less than 7 days away.");
+            return;
+        }
 
         // 显示模态框
         var editModal = document.getElementById('editAppointmentModal');
@@ -274,10 +283,11 @@ function saveEditedAppointment(id, newDatetime, duration, newTrainer) {
     })
         .then(response => {
             if (response.ok) {
-                console.log("提交成功");
+                console.log('Appointment updated successfully!');
                 window.location.reload();
             } else {
-                console.error("提交失败: " + response.status);
+                alert("Appointment update failed!")
+                console.error('There was a problem with the request:', error.message);
             }
         })
         .catch(error => {

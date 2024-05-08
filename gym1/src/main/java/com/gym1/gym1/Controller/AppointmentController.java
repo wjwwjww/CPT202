@@ -73,23 +73,14 @@ private userRepo userrepo;
     }
     @PostMapping("/updateappointment")
     public ResponseEntity<?> updateAppointment(@RequestBody Appointment appointmentDTO) {
-      LocalDateTime time= appointmentDTO.getAppointmentTime();
-        LocalDateTime oneWeekBefore = LocalDateTime.now().plusWeeks(1); // 获取当前时间一周后的时间点
-        // 检查是否在预约时间前一周内提交更新
-        if (time.isAfter(oneWeekBefore)) {
-            // 检查是否存在该预约信息
-            Optional<Appointment> existingAppointment = appointmentRepo.findById(appointmentDTO.getId());
-            if (existingAppointment.isPresent()) {
-                // 存在该预约信息，调用服务层方法更新预约信息
-                appointmentService.updateAppointment(appointmentDTO);
-                return ResponseEntity.ok("预约信息已成功更新");
-            } else {
-                // 不存在该预约信息，返回错误响应
-                return ResponseEntity.ok("Appointment not found: " + appointmentDTO.getId());
-            }
+        Optional<Appointment> existingAppointment = appointmentRepo.findById(appointmentDTO.getId());
+        if (existingAppointment.isPresent()) {
+            // 存在该预约信息，调用服务层方法更新预约信息
+            appointmentService.updateAppointment(appointmentDTO);
+            return ResponseEntity.ok("预约信息已成功更新");
         } else {
-            // 预约时间距离当前时间不足一周，返回错误响应
-            return ResponseEntity.ok("Unable to update appointment. Please submit at least one week before the appointment.");
+            // 不存在该预约信息，返回错误响应
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Appointment not found with ID: " + appointmentDTO.getId());
         }
 
     }

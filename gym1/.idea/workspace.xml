@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bbf98ea9-ed18-40fa-8b8d-08b1947d6208" name="更改" comment="Update for viewing trainer list, ShopManager-side">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Model/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Repository/AppointmentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Repository/AppointmentRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/AppointmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Service/AppointmentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Appointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Model/Appointment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/AppointmentRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Repository/AppointmentRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/AppointmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Service/AppointmentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Controller/AppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gym1/gym1/Controller/AppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customer/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/customer/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gym1/gym1/Controller/AppointmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/customer/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/customer/view.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +150,8 @@
       <workItem from="1715065111003" duration="12512000" />
       <workItem from="1715080751207" duration="113000" />
       <workItem from="1715080867299" duration="2082000" />
+      <workItem from="1715083245754" duration="614000" />
+      <workItem from="1715147640467" duration="2263000" />
     </task>
     <task id="LOCAL-00001" summary="Update for viewing trainer list, ShopManager-side">
       <option name="closed" value="true" />
@@ -263,7 +265,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715080782393</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Update for viewing trainer list, ShopManager-side">
+      <option name="closed" value="true" />
+      <created>1715083260008</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715083260008</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Update for viewing trainer list, ShopManager-side">
+      <option name="closed" value="true" />
+      <created>1715148249585</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715148249585</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
