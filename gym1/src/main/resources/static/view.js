@@ -89,9 +89,17 @@ function displayAppointments(appointments) {
         // 格式化日期时间
 
         var startDateTime = formatDateTime(new Date(appointment.appointmentTime));
-        var endDateTime = formatDateTime(new Date(appointment.appointmentEndTime));
+        // 将结束时间转换为日期对象
+        var endDateTime = new Date(appointment.appointmentTime);
+
+// 将持续时间添加到结束时间
+        endDateTime.setMinutes(endDateTime.getMinutes() + appointment.duration);
+        endDateTime=formatDateTime(endDateTime);
         var duration = calculateDuration(startDateTime, endDateTime);
         var row = document.createElement("tr");
+        console.log(endDateTime)
+        console.log(appointment.appointmentTime)
+        console.log(appointment.duration)
         row.innerHTML = "<td>" + startDateTime + "</td>" +
             "<td>" + duration + "</td>" +
             "<td>" + endDateTime + "</td>" +
