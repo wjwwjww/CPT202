@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.gym1.gym1.Model.Customer;
 import com.gym1.gym1.Model.Trainer;
-import com.gym1.gym1.Repository.CustomerRepo;
+import com.gym1.gym1.Model.User;
 import com.gym1.gym1.Repository.trainerrepo;
+import com.gym1.gym1.Repository.userRepo;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -26,7 +26,7 @@ public class RegisterController {
     @Autowired
     private trainerrepo trainerRepo;
     @Autowired
-    private CustomerRepo customerRepo;
+    private userRepo userRepo;
 
     @GetMapping("/userType")
     public String getUserType() {
@@ -101,7 +101,7 @@ public class RegisterController {
             Trainer trainer = trainerRepo.findByTrainerEmail(email);
             isUsed = trainer != null;
         } else if ("customer".equals(userType)) {
-            Customer customer = customerRepo.findByEmail(email);
+            User customer = userRepo.findByUserEmail(email);
             isUsed = customer != null;
         }
 
@@ -122,10 +122,10 @@ public class RegisterController {
         String emailValidationStatus = request.getParameter("emailValidationStatus");
 
         if ("available".equals(emailValidationStatus)) {
-            Customer customer = new Customer();
-            customer.setEmail(email);
-            customer.setPassword(password);
-            customerRepo.save(customer);
+            User user = new User();
+            user.setuserEmail(email);
+            user.setuserPassword(password);
+            userRepo.save(user);
             return "completion";
         } else {
             redirectAttributes.addFlashAttribute("error", "Email is not available.");
