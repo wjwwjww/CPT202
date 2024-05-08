@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -121,6 +123,36 @@ private userRepo userrepo;
     @GetMapping("/getappointment/trainer/{id}")
     public List<Appointment> getAppointmentByTrainerId(@PathVariable Integer id) {
         return appointmentService.getAppointmentByTrainerId(id);
+    }
+
+    @PutMapping("makecomplete/{id}")
+    public ResponseEntity<?> makeComplete(@PathVariable Integer id){
+        Appointment appointment = appointmentRepo.getAppointmtbyappointmentid(id);
+        if(appointment != null){
+            appointment.setStatus(1);
+            appointmentService.updateAppointment(appointment);
+            return ResponseEntity.ok("Appointment completed successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/submitRating/{id}")
+    public ResponseEntity<?> submitRating(@PathVariable Integer id, @RequestBody Integer rating) {
+        Appointment appointment = appointmentRepo.getAppointmtbyappointmentid(id);
+
+        if (appointment != null) {
+            System.out.println("Appointment found");
+            appointment.setRating(rating);
+            appointmentRepo.save(appointment);
+
+            // 返回 JSON 对象
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Rating submitted successfully");
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 

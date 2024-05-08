@@ -67,4 +67,7 @@ public interface AppointmentRepo extends JpaRepository<Appointment, Integer> {
 
     @Query("SELECT a.appointmentTime, a.duration FROM Appointment a where a.trainer = :trainer")
     List<Object[]> getAllLocalTimeAndDuration(Trainer trainer);
+
+    @Query("SELECT a FROM Appointment a WHERE a.id = ?1")
+    Appointment getAppointmtbyappointmentid(Integer id);
 }

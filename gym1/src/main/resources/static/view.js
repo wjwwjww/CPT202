@@ -97,15 +97,122 @@ function displayAppointments(appointments) {
         endDateTime=formatDateTime(endDateTime);
         var duration = calculateDuration(startDateTime, endDateTime);
         var row = document.createElement("tr");
+        var status = appointment.status;
+        var message;
+        if(status===0){
+            message="ongoning";
+        }else if(status===1){
+             message="completed";
+        }else if(status===2){
+            message="canceled";
+        }else {
+            throw new Error("Invalid status");
+        }
+
 
         row.innerHTML = "<td>" + startDateTime + "</td>" +
             "<td>" + duration + "</td>" +
             "<td>" + endDateTime + "</td>" +
+
             "<td>" + appointment.trainer.trainerName + "</td>"+
         "<td><button onclick='editappointment(\"" +appointment.id + "\", \"" + startDateTime + "\", \"" + duration + "\", \"" + appointment.trainer+ "\")'>edit</button></td>"+
-        "<td><button onclick='deleteappointment(\"" + appointment.id + "\", \"" + startDateTime + "\", \"" + endDateTime + "\", \"" + appointment.trainer.trainerName + "\")'>delete</button></td>";
+        "<td><button onclick='deleteappointment(\"" + appointment.id + "\", \"" + startDateTime + "\", \"" + endDateTime + "\", \"" + appointment.trainer.trainerName + "\")'>cancel</button></td>"+
+            "<td><button onClick='makecomplete(\"" + appointment.id + "\")' >" + message + "</button></td>" +
+
+               "<td><button onclick='makecomment(\""+appointment.id+"\",\""+appointment.status +"\")'>comment</button></td>";
+
+
         appointmentBody.appendChild(row);
     });
+}
+
+function makecomment(id, status) {
+    // 1. Ensure showcomment() function exists and is called at the right time
+
+
+    // 2. Add comments to clarify the meaning of status values
+    // Status: 0 - Incomplete appointment, 1 - Completed appointment
+    if (status === 0) {
+        alert("You can only comment on completed appointments!");
+    }
+
+        showcomment(id);
+}
+
+
+
+function showcomment(id) {
+    var commentModal = document.getElementById('commentModal');
+    commentModal.style.display = 'block';
+    var closeBtn = document.getElementsByClassName('close1');
+    closeBtn[0].onclick = function() {
+        commentModal.style.display = 'none';
+    }
+    var applyButton = document.querySelector("#commentModal input[type='submit']");
+    applyButton.onclick = function() {
+        submitRating(id);
+    };
+
+    // 点击模态框之外的区域关闭模态框
+    window.onclick = function(event) {
+        if (event.target === commentModal) {
+            commentModal.style.display = 'none';
+        }
+    };
+
+}
+
+function submitRating(id) {
+    // 获取选择框中选中的值
+    var selectBox = document.querySelector("select[name='Target Rating']");
+    var selectedValue = parseInt(selectBox.value);
+    console.log("Selected rating:", selectedValue);
+
+    var rating1=selectedValue;
+    console.log("Submitting rating for appointment ID:", id);
+    // 在此处添加将评分提交到服务器的代码
+    // 使用 fetch 或者其他适当的方法
+    fetch("/api/submitRating/"+id, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(rating1)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to submit rating");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // 处理服务器返回的数据
+            console.log("Rating submitted successfully:", data);
+            alert("Rating submitted successfully!");
+            // 这里可以根据需要执行其他操作，比如刷新页面或更新评分列表等
+        })
+        .catch(error => {
+            console.error("Error submitting rating:", error);
+            alert("Failed to submit rating. Please try again later.");
+        });
+}
+
+
+function makecomplete(id) {
+    fetch(`/api/makecomplete/${id}`, {
+        method: 'PUT'
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to complete appointment');
+
+            }else {
+                alert("Appointment completed successfully!");
+                window.location.reload();
+            }
+        });
+
+
 }
 
 function reverseOrder() {
