@@ -68,7 +68,9 @@
       }
 
       .form-field input[type="email"],
-      .form-field input[type="password"] {
+      .form-field input[type="password"],
+      .form-field input[type ="number"],
+      .form-field input[type="text"]{
         width: calc(
           100% - 20px
         ); /* Adjust the width as needed, the 20px accounts for padding */
@@ -294,6 +296,16 @@
             />
             <span id="confirm-password-error" class="password-error"></span>
           </div>
+          <div class="form-field required">
+            <label for="userName">Name</label>
+            <input type="text" id="userName" name="userName" placeholder="Full name" required/>
+          </div>
+
+          <div class="form-field required">
+            <label for="userAge">Age</label>
+            <input type="number" id="userAge" name="userAge" placeholder="Your age" min="1" required/>
+          </div>
+
           <input type="hidden" id="emailValidationStatus" name="emailValidationStatus" value="">
 
 
