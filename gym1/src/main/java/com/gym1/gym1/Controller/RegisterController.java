@@ -120,11 +120,15 @@ public class RegisterController {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String emailValidationStatus = request.getParameter("emailValidationStatus");
+        String userName = request.getParameter("userName");
+        int userAge = Integer.parseInt(request.getParameter("userAge"));
 
         if ("available".equals(emailValidationStatus)) {
             User user = new User();
             user.setuserEmail(email);
             user.setuserPassword(password);
+            user.setuserName(userName);
+            user.setuserAge(userAge);
             userRepo.save(user);
             return "completion";
         } else {
