@@ -207,14 +207,15 @@ function deleteappointment(id) {
                 alert("please choose time");
                 return;
             }
-            console.log(newDate);
-            console.log(newTime);
+
+
             var dateTimeString = newDate + "T" + newTime;
             if (!dateTimeString) {
                 alert("Please select a duration");
                 return;
             }
             var dateTime = new Date(dateTimeString);
+            duration=document.getElementById("durationSelect1").value*60;
 
 
 // 获取年、月、日、小时和分钟
