@@ -17,6 +17,7 @@ body {
     z-index: 2;
     text-align: left;
     animation: slideInDown 0.5s ease-out; /* 将动画应用到导航栏 */
+    display: flex;
 }
 @keyframes slideInDown {
     from {
@@ -42,6 +43,7 @@ body {
 }
 
 #navbar a {
+    /*margin-left: 5px; !* 调整图标和文字之间的间距 *!*/
     color: #fff;
     text-decoration: none;
     font-weight: bold;
