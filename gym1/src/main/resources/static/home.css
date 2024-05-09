@@ -1,4 +1,11 @@
 
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 #navbar {
     position: fixed;
     top: 0;
@@ -132,7 +139,25 @@ background-image: url("/static/image/img_2.png");
     font-weight: bold;
     text-align: center; /* 居中对齐 */
     margin-top: 90px; /* 调整与导航栏的距离 */
-    animation: fadeIn 3s ease forwards;
+
+    background-image: url('/image/img_2.png');
+    background-size: cover; /* 控制背景图片的尺寸，使其覆盖整个元素 */
+    background-position: center; /* 控制背景图片在元素中的位置 */
+    animation: enterenter 1.8s infinite cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-iteration-count: 1;
+
+
+}
+@keyframes enterenter {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes fadeIn {
@@ -144,6 +169,19 @@ background-image: url("/static/image/img_2.png");
     }
 }
 
+
+.readmore {
+    text-decoration: underline;
+    color: blue; /* 设置链接的颜色 */
+    cursor: pointer; /* 鼠标指针样式 */
+    position: absolute;
+    bottom: 20px; /* 距离底部 20px */
+
+}
+
+.readmore:hover {
+    color: darkblue; /* 鼠标悬停时的颜色 */
+}
 
 /* 新闻部分样式 */
 #news {
@@ -219,11 +257,49 @@ background-image: url("/static/image/img_2.png");
 }
 
 .paragraph-with-image {
+ position: relative;
+    z-index: 999;
     margin-bottom: 20px;
-    overflow: hidden; /* 清除浮动 */
+    /*overflow: hidden;*/
     font-size: 30px;
-    font-family: Arial, sans-serif; /* 更改字体 */
+    font-family: Arial, sans-serif;
+
+    padding-left: 100px;
+    padding-right: 100px;
+    transform: translateX(-20px);
+  animation: fadeIn 1s ease;
+
 }
+
+#prevButton, #nextButton {
+    position: absolute;
+    width: 50px; /* 设置按钮宽度 */
+    height: 50px; /* 设置按钮高度 */
+    border: none; /* 移除按钮边框 */
+    background-color: transparent; /* 设置背景颜色为透明 */
+    background-repeat: no-repeat; /* 禁止图片重复 */
+    background-size: contain; /* 保持图片宽高比 */
+    /*padding-bottom: 300px;*/
+    /*padding-top: 300px;*/
+
+}
+
+#prevButton{
+    position: absolute;
+    left: 10px;
+    background-image: url("/image/nextselector.svg");
+    transform: rotate(180deg);
+}
+#nextButton{
+    position: absolute;
+    right: 10px;
+    background-image: url("/image/nextselector.svg");
+
+
+}
+
+
+
 
 .paragraph-with-image img {
     float: left;
@@ -232,7 +308,7 @@ background-image: url("/static/image/img_2.png");
     height: 300px; /* 设置图片高度 */
     object-fit: cover; /* 保持图片比例并填充整个容器 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加图片阴影效果 */
-    transition: transform 0.3s ease; /* 添加过渡效果 */
+    /*transition: transform 0.3s ease; !* 添加过渡效果 *!*/
 }
 .paragraph-with-image img:hover {
     transform: scale(1.1); /* 鼠标悬停时放大图片 */
@@ -258,6 +334,7 @@ body {
 
 /* 加入我们部分样式 */
 #joinus {
+
     margin-top: 40px; /* 调整与使命部分的距离 */
     padding: 20px; /* 内边距 */
     background-color: #f4f4f4; /* 背景色 */
@@ -267,12 +344,13 @@ body {
 
 /* 联系信息样式 */
 #contact {
+    width: 100%;
     margin-top: 20px; /* 调整与加入我们部分的距离 */
     padding: 20px; /* 内边距 */
     background-color: #f9f9f9; /* 背景色 */
     border-radius: 5px; /* 圆角边框 */
     text-align: left;
-    width: 300px;
+
     animation: slideInBottomToTop 1s ease forwards;
 }
 @keyframes slideInBottomToTop {
