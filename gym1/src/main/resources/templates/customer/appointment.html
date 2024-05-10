@@ -153,7 +153,7 @@
     }
     let ranking;
 
-    fetch('/getUserEmail')
+    fetch('/getUserData')
         .then(response => response.json()) // Parse JSON response
         .then(data => {
             const userEmail=data.userEmail;
