@@ -104,9 +104,9 @@ public class userController {
         return "UserPage";
     }
 
-    @GetMapping("/getUserData")
+    @GetMapping("/getUserEmail")
     @ResponseBody
-    public Map<String, String> getUserData() {
+    public Map<String, String> getUserEmail() {
         Map<String, String> response = new HashMap<>();
         User user = (User) session.getAttribute("loggedInUser");
         if (user != null) {
@@ -116,6 +116,34 @@ public class userController {
         }
         return response;
     }
+    @GetMapping("/getUserName")
+    @ResponseBody
+    public Map<String, String> getUserName() {
+        Map<String, String> response = new HashMap<>();
+        User user = (User) session.getAttribute("loggedInUser");
+        if (user != null) {
+            response.put("userName", user.getuserName());
+        } else {
+            response.put("error", "User not logged in");
+        }
+        return response;
+    }
+    @GetMapping("/getUserAge")
+@ResponseBody
+public Map<String, Object> getUserAge() {
+    Map<String, Object> response = new HashMap<>();
+    User user = (User) session.getAttribute("loggedInUser");
+    if (user != null) {
+        // Assuming userAge is an integer attribute of the User class
+        response.put("userAge", user.getuserAge());
+    } else {
+        response.put("error", "User not logged in");
+    }
+    return response;
+}
+
+
+
 
 
 
@@ -274,10 +302,12 @@ public class userController {
         }
     }
 
-
-
-
-
+    @GetMapping("/logout")
+    public String logout() {
+        session.removeAttribute("loggedInUser");
+        return "/Home/Home.html";
+    }
+    
 
 
 
