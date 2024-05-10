@@ -24,8 +24,11 @@ public class redirect {
     public String appointment() {
         return "customer/appointment.html";
     }
-    @RequestMapping("/home")
+     @RequestMapping("/home")
     public String home() {
+        if(session.getAttribute("loggedInUser")!=null){
+            return "UserPage";
+        }
         return "/Home/Home.html";
     }
     @RequestMapping("/trainer")
