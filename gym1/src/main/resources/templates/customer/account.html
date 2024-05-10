@@ -85,23 +85,88 @@
     <p>Hi customer</p>
     <img id="avatar" th:src="@{/image/img.png}">
     <div id="userInfoContainer">
-        <p>Username: <span id="username"></span></p>
-        <p>Email: <span id="email"></span></p>
-        <p>Phone: <span id="phone"></span></p>
-        <p>City: <span id="city"></span></p>
+        <p>Username: <span id="user-name"></span></p>
+        <p>Email: <span id="user-email"></span></p>
+        <p>Age: <span id="user-age"></span></p>
         <button id="editButton">Change</button>
     </div>
     <div id="planinfo">
         <p>Plan Information</p>
-        <p>Plan: <span id="plan"></span></p>
+        <p>Plan: <span id="plan-name"></span></p>
         <p>Start Date: <span id="startDate"></span></p>
         <p>End Date: <span id="endDate"></span></p>
-        <p>Auto Plan Renewal: <input type="checkbox" id="autoRenewalCheckbox" disabled></p>
-        <p>Newsletter Subscription: <input type="checkbox" id="newsletterSubscriptionCheckbox" disabled></p>
     </div>
 </div>
 
 <script>
+
+
+fetch('/getUserEmail')
+  .then(response => response.json()) // Parse JSON response
+  .then(data => {
+    if (data.userEmail) {
+      document.getElementById('user-email').textContent = data.userEmail;
+    } else {
+      console.error('Error fetching user data:', data.error);
+    }
+  })
+  .catch(error => console.error('Error fetching user data:', error));
+
+  fetch('/getUserName')
+  .then(response => response.json()) // Parse JSON response
+  .then(data => {
+    if (data.userName) {
+      document.getElementById('user-name').textContent = data.userName;
+    } else {
+      console.error('Error fetching user data:', data.error);
+    }
+  })
+  .catch(error => console.error('Error fetching user data:', error));
+
+  fetch('/getUserAge')
+  .then(response => response.json()) // Parse JSON response
+  .then(data => {
+    if (data.userAge) {
+      document.getElementById('user-age').textContent = data.userAge;
+    } else {
+      console.error('Error fetching user data:', data.error);
+    }
+  })
+  .catch(error => console.error('Error fetching user data:', error));
+
+
+  
+
+  fetch('/getPlanStartingDate')
+  .then(response => response.json()) // Parse JSON response
+  .then(data => {
+    if (data.planStartingDateTime !== undefined) {
+      document.getElementById('startDate').textContent = "Plan Starting Date: " + data.planStartingDateTime;
+    } else {
+      console.error('Error fetching plan starting date:', data.error);
+    }
+  })
+  .catch(error => console.error('Error fetching plan starting date:', error));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // JavaScript 在这里
     const userInfo = {
         username: 'John',
