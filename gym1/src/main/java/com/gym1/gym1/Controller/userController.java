@@ -104,7 +104,7 @@ public class userController {
         return "UserPage";
     }
 
-    @GetMapping("/getUserEmail")
+    @GetMapping("/getUserData")
     @ResponseBody
     public Map<String, String> getUserEmail() {
         Map<String, String> response = new HashMap<>();
