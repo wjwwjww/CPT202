@@ -104,6 +104,11 @@ public class redirect {
         return "/trainer/trainerview.html";
     }
 
+    @RequestMapping("/")
+    public String defaultPage(){
+        return "redirect:/home";
+    }
+
 //    @RequestMapping("/yooheenregister")
 //    public String yooheenregister() {
 //        return "/userType.html";
