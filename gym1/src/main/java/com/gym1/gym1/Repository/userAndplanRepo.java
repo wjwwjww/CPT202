@@ -20,4 +20,7 @@ public interface userAndplanRepo extends JpaRepository<UserandPlan, Integer> {
 
     @Query("SELECT uap.plan.planId FROM UserandPlan uap WHERE uap.user.userId = ?1")
     Integer geidfromid(Integer id);
+
+    @Query("SELECT uap FROM UserandPlan uap WHERE uap.user = ?1 ORDER BY uap.planStartedTime Desc LIMIT 1")
+    UserandPlan findByUserLatest(User user);
 }

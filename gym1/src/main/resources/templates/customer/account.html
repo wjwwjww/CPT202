@@ -137,11 +137,13 @@ fetch('/getUserData')
 
   
 
-  fetch('/getPlanStartingDate')
+  fetch('/getUserPlanInfo')
   .then(response => response.json()) // Parse JSON response
   .then(data => {
-    if (data.planStartingDateTime !== undefined) {
-      document.getElementById('startDate').textContent = "Plan Starting Date: " + data.planStartingDateTime;
+    if (data) {
+      document.getElementById('plan-name').textContent = data.planName;
+      document.getElementById('startDate').textContent = data.planStartTime;
+      document.getElementById('endDate').textContent = data.planEndTime;
     } else {
       console.error('Error fetching plan starting date:', data.error);
     }

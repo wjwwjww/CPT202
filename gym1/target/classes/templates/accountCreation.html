@@ -47,8 +47,8 @@
         border: 0;
         height: 1px;
         background-color: #b9b9b9;
-        margin-top: 30px; /* 상단 마진을 50px로 설정 */
-        margin-bottom: 30px; /* 하단 마진을 50px로 설정 */
+        margin-top: 30px;
+        margin-bottom: 30px; 
       }
 
       .form-field {
@@ -68,7 +68,9 @@
       }
 
       .form-field input[type="email"],
-      .form-field input[type="password"] {
+      .form-field input[type="password"],
+      .form-field input[type ="number"],
+      .form-field input[type="text"]{
         width: calc(
           100% - 20px
         ); /* Adjust the width as needed, the 20px accounts for padding */
@@ -94,22 +96,22 @@
         display: block; /* Ensures it takes up the full width beneath the email field */
         font-size: 0.8em; /* Adjust the font size as desired */
         margin-top: 5px; /* Adds a small space between the input field and the message */
-        height: 1px; /* 메시지 넣을 공간 높이*/
+        height: 1px; 
       }
 
       .password-error {
         display: block; /* Ensures it takes up the full width beneath the email field */
         font-size: 0.8em; /* Adjust the font size as desired */
         margin-top: 5px; /* Adds a small space between the input field and the message */
-        height: 1px; /* 메시지 넣을 공간 높이*/
+        height: 1px;
         color: red;
       }
 
       .confirm-password-error {
-        display: block; /* Ensures it takes up the full width beneath the email field */
-        font-size: 0.8em; /* Adjust the font size as desired */
-        margin-top: 5px; /* Adds a small space between the input field and the message */
-        height: 1px; /* 메시지 넣을 공간 높이*/
+        display: block; 
+        font-size: 0.8em; 
+        margin-top: 5px; 
+        height: 1px; 
         color: red;
       }
 
@@ -160,7 +162,7 @@
       }
 
       .progressbar li {
-        position: relative; /*가상 요소를 상대적으로 배치*/
+        position: relative;
         flex: 1;
         text-align: center;
         font-size: 11px;
@@ -187,13 +189,13 @@
         width: 100%;
         height: 2px;
         background-color: rgb(185, 185, 185);
-        left: 50%; /* Changed to 50% to start from the middle */
+        left: 50%;
         z-index: 1;
-        top: 10px; /* Adjust this value as needed to align with the middle of the circle */
-        /* This will center the line with respect to the circle */
+        top: 10px; 
+        
       }
 
-      .progressbar li.completed {/*텍스트*/
+      .progressbar li.completed {
         color: rgb(231, 76, 60); 
       }
       .progressbar li.active {
@@ -294,6 +296,16 @@
             />
             <span id="confirm-password-error" class="password-error"></span>
           </div>
+          <div class="form-field required">
+            <label for="userName">Name</label>
+            <input type="text" id="userName" name="userName" placeholder="Full name" />
+          </div>
+
+          <div class="form-field required">
+            <label for="userAge">Age</label>
+            <input type="number" id="userAge" name="userAge" placeholder="Your age" min="1" />
+          </div>
+
           <input type="hidden" id="emailValidationStatus" name="emailValidationStatus" value="">
 
 
@@ -325,21 +337,21 @@
                     "<span style='color: green;'>&#10004;</span> Email is available";
 
                   emailStatus.style.color = "green";
-                  emailValidationInput.value = "available";  // Hidden input 업데이트
+                  emailValidationInput.value = "available";
 
                   sessionStorage.setItem("emailValidationStatus", "available");
                 } else if (data.status === "used") {
                   emailStatus.innerHTML =
                     "<span style='color: red;'>&#10006;</span> Email is already in use";
                   emailStatus.style.color = "red";
-                  emailValidationInput.value = "used";  // Hidden input 업데이트
+                  emailValidationInput.value = "used";
 
                   sessionStorage.setItem("emailValidationStatus", "used");
                 } else {
                   emailStatus.innerHTML =
                     "<span style='color: red;'>&#10006;</span> Email format : example@example.com";
                   emailStatus.style.color = "red";
-                  emailValidationInput.value = "";  // Hidden input 클리어
+                  emailValidationInput.value = ""; 
 
                   sessionStorage.removeItem("emailValidationStatus");
                 }
@@ -390,6 +402,8 @@
           sessionStorage.getItem("emailValidationStatus") === "available";
         var password = document.getElementById("password").value;
         var confirmPassword = document.getElementById("confirm-password").value;
+        var userName = document.getElementById("userName").value;
+        var userAge = document.getElementById("userAge").value;
 
         if (email.length<=0){
           alert("Please verify your email before signing up.");
@@ -407,6 +421,14 @@
           alert("Passwords do not match");
           return false;
         }
+        if (userName.length === 0) {
+          alert("Please enter your name.");
+          return false;
+      }
+        if (userAge.length === 0) {
+          alert("Please enter your age.");
+          return false;
+    }
         return true; // Only submit form if all checks are passed
       }
 

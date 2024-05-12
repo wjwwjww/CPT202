@@ -10,6 +10,7 @@ import com.gym1.gym1.Repository.userRepo;
 import jakarta.servlet.http.HttpSession;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,6 +117,25 @@ public class userController {
         }
         return response;
     }
+
+    @GetMapping("/getUserPlanInfo")
+    @ResponseBody
+    public Map<String, String> getUserPlan(){
+        Map<String, String> response = new HashMap<>();
+        User user = (User) session.getAttribute("loggedInUser");
+        if (user != null) {
+            UserandPlan uap = (UserandPlan) UserAndPlanRepo.findByUserLatest(user);
+            DateTimeFormatter localTimeFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+            response.put("planName", uap.getPlan().getPlanName());
+            response.put("planStartTime", uap.getPlanStartedTime().format(localTimeFormat));
+            response.put("planEndTime", uap.getPlanStartedTime().plusMonths(uap.getPlan().getPlanDurationMonths()).format(localTimeFormat));
+
+        } else {
+            response.put("error", "User not logged in");
+        }
+        return response;
+    }
+
     @GetMapping("/getUserName")
     @ResponseBody
     public Map<String, String> getUserName() {
@@ -129,17 +149,17 @@ public class userController {
         return response;
     }
     @GetMapping("/getUserAge")
-@ResponseBody
-public Map<String, Object> getUserAge() {
-    Map<String, Object> response = new HashMap<>();
-    User user = (User) session.getAttribute("loggedInUser");
-    if (user != null) {
-        // Assuming userAge is an integer attribute of the User class
-        response.put("userAge", user.getuserAge());
-    } else {
-        response.put("error", "User not logged in");
-    }
-    return response;
+    @ResponseBody
+    public Map<String, Object> getUserAge() {
+        Map<String, Object> response = new HashMap<>();
+        User user = (User) session.getAttribute("loggedInUser");
+        if (user != null) {
+            // Assuming userAge is an integer attribute of the User class
+            response.put("userAge", user.getuserAge());
+        } else {
+            response.put("error", "User not logged in");
+        }
+        return response;
 }
 
 
@@ -208,12 +228,14 @@ public Map<String, Object> getUserAge() {
         User user1 = (User) session.getAttribute("loggedInUser");
         UserandPlan purchase1 = new UserandPlan(0,LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
-            return "planAlreadyExists";
+            UserandPlan lastPlan = UserAndPlanRepo.findByUserLatest(user1);
+            if(lastPlan.getPlanStartedTime().plusMonths(lastPlan.getPlan().getPlanDurationMonths()).isAfter(LocalDateTime.now())){
+                return "planAlreadyExists";
+            }
         }
-        else{
-            UserAndPlanRepo.save(purchase1);
-
-            return "success_forPlan";}
+        
+        UserAndPlanRepo.save(purchase1);
+        return "success_forPlan";
     }
 
     @PostMapping("/Plan_Two")
@@ -222,12 +244,14 @@ public Map<String, Object> getUserAge() {
         User user1 = (User) session.getAttribute("loggedInUser");
         UserandPlan purchase1 = new UserandPlan(0, LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
-            return "planAlreadyExists";
+            UserandPlan lastPlan = UserAndPlanRepo.findByUserLatest(user1);
+            if(lastPlan.getPlanStartedTime().plusMonths(lastPlan.getPlan().getPlanDurationMonths()).isAfter(LocalDateTime.now())){
+                return "planAlreadyExists";
+            }
         }
-        else{
-            UserAndPlanRepo.save(purchase1);
-
-            return "success_forPlan";}
+        
+        UserAndPlanRepo.save(purchase1);
+        return "success_forPlan";
     }
 
     @PostMapping("/Plan_Three")
@@ -236,12 +260,14 @@ public Map<String, Object> getUserAge() {
         User user1 = (User) session.getAttribute("loggedInUser");
         UserandPlan purchase1 = new UserandPlan(0, LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
-            return "planAlreadyExists";
+            UserandPlan lastPlan = UserAndPlanRepo.findByUserLatest(user1);
+            if(lastPlan.getPlanStartedTime().plusMonths(lastPlan.getPlan().getPlanDurationMonths()).isAfter(LocalDateTime.now())){
+                return "planAlreadyExists";
+            }
         }
-        else{
-            UserAndPlanRepo.save(purchase1);
-
-            return "success_forPlan";}
+        
+        UserAndPlanRepo.save(purchase1);
+        return "success_forPlan";
     }
     @PostMapping("/Plan_Four")
     public String postMethodName4(@ModelAttribute UserandPlan userandplan) {
@@ -249,12 +275,14 @@ public Map<String, Object> getUserAge() {
         User user1 = (User) session.getAttribute("loggedInUser");
         UserandPlan purchase1 = new UserandPlan(0, LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
-            return "planAlreadyExists";
+            UserandPlan lastPlan = UserAndPlanRepo.findByUserLatest(user1);
+            if(lastPlan.getPlanStartedTime().plusMonths(lastPlan.getPlan().getPlanDurationMonths()).isAfter(LocalDateTime.now())){
+                return "planAlreadyExists";
+            }
         }
-        else{
-            UserAndPlanRepo.save(purchase1);
-
-            return "success_forPlan";}
+        
+        UserAndPlanRepo.save(purchase1);
+        return "success_forPlan";
     }
 
     @PostMapping("/Plan_Five")
@@ -263,12 +291,14 @@ public Map<String, Object> getUserAge() {
         User user1 = (User) session.getAttribute("loggedInUser");
         UserandPlan purchase1 = new UserandPlan(0,LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
-            return "planAlreadyExists";
+            UserandPlan lastPlan = UserAndPlanRepo.findByUserLatest(user1);
+            if(lastPlan.getPlanStartedTime().plusMonths(lastPlan.getPlan().getPlanDurationMonths()).isAfter(LocalDateTime.now())){
+                return "planAlreadyExists";
+            }
         }
-        else{
-            UserAndPlanRepo.save(purchase1);
-
-            return "success_forPlan";}
+        
+        UserAndPlanRepo.save(purchase1);
+        return "success_forPlan";
     }
     @PostMapping("/Plan_Six")
     public String postMethodName6(@ModelAttribute UserandPlan userandplan) {
@@ -276,12 +306,14 @@ public Map<String, Object> getUserAge() {
         User user1 = (User) session.getAttribute("loggedInUser");
         UserandPlan purchase1 = new UserandPlan(0, LocalDateTime.now(), user1, plan1);
         if(UserAndPlanRepo.existsByUser(user1)){
-            return "planAlreadyExists";
+            UserandPlan lastPlan = UserAndPlanRepo.findByUserLatest(user1);
+            if(lastPlan.getPlanStartedTime().plusMonths(lastPlan.getPlan().getPlanDurationMonths()).isAfter(LocalDateTime.now())){
+                return "planAlreadyExists";
+            }
         }
-        else{
-            UserAndPlanRepo.save(purchase1);
 
-            return "success_forPlan";}
+        UserAndPlanRepo.save(purchase1);
+        return "success_forPlan";
     }
 
 

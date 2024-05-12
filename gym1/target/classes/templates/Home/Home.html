@@ -25,7 +25,6 @@
 <div id="account">
     <ul>
         <li id="tologin" style="display:none;"><a href="/login"  class="routerdirect">Login</a></li>
-        <li id="toregister" style="display:none;"><a href="/userType" class="routerdirect">Register</a></li>
     </ul>
     <div id="username_display"></div>
     <button id="logout" onclick="logout()" style="display:none;">Logout</button>
@@ -68,12 +67,12 @@
         </script>
 
 <div id="front">
-    <p id="welcome1">Welcome to our gym! We are dedicated to helping you achieve your fitness goals and enhance your quality of life at our professional fitness club.</p>
+  <p id="welcome1">Welcome to our gym! We are dedicated to helping you achieve your fitness goals and enhance your quality of life at our professional fitness club.</p>
     </div>
     <div id="news">
         <p class="welcome2">
             News
-            <button class="readmore">read more</button>
+
         </p>
 
         <div>
@@ -83,29 +82,33 @@
                 <li>you can ask for help with the staff with the click of right corner</li>
             </ul>
         </div>
+        <a href="#" class="readmore">learn more</a>
     </div>
     <div id="aboutus">
-        <p class="welcome2">About us</p><br>
+        <p class="welcome2">About us</p>
         <a>We are a fitness club located in [location], committed to providing high-quality fitness services to our members. We strive to create a positive and healthy community for our members. Our team consists of experienced, passionate, and professional trainers, and we offer state-of-the-art equipment and a variety of fitness classes to cater to your needs.</a>
     </div>
 
 <div id="intro">
     <p class="welcome2">Our Facilities and Services:</p>
+
     <div class="paragraph-with-image">
         <p>Spacious and well-lit gym space equipped with the latest fitness equipment to meet all your fitness needs.</p>
         <img th:src="@{/image/img_3.png}" alt="Gym Space Image">
     </div>
-    <br>
-    <div class="paragraph-with-image">
 
+
+    <div class="paragraph-with-image">
         <p>Diverse group classes including yoga, pilates, aerobic exercises, and more, guided by expert trainers suitable for all ages and fitness levels.</p>
         <img th:src="@{/image/img_4.png}" alt="Group Classes Image">
     </div>
+
     <div class="paragraph-with-image">
 
         <p>Personal training sessions tailored to your individual goals and fitness level, ensuring you achieve the best results.</p>
         <img th:src="@{/image/img_5.png}" alt="Personal Training Image">
     </div>
+
     <div class="paragraph-with-image">
 
         <p>Comfortable lounge and shower facilities for you to relax and rejuvenate after your workout.</p>
@@ -113,6 +116,44 @@
         <img th:src="@{/image/img_7.png}" alt="Lounge Facilities Image">
         <img th:src="@{/image/img_8.png}" alt="Lounge Facilities Image">
     </div>
+    <button id="prevButton"></button>
+    <button id="nextButton"></button>
+    <script>
+        var currentIndex = 0;
+        var paragraphs = document.querySelectorAll('.paragraph-with-image');
+
+        function showParagraph(index) {
+            // 隐藏所有段落
+            paragraphs.forEach(function(paragraph) {
+                paragraph.style.display = 'none';
+            });
+
+            // 显示指定索引的段落
+            paragraphs[index].style.display = 'block';
+        }
+
+        // 初始化时显示第一个段落
+        showParagraph(currentIndex);
+
+        // 点击 "下一个" 按钮时，切换到下一个段落
+        document.getElementById('nextButton').addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % paragraphs.length;
+            showParagraph(currentIndex);
+        });
+
+        // 点击 "上一个" 按钮时，切换到上一个段落
+        document.getElementById('prevButton').addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + paragraphs.length) % paragraphs.length;
+            showParagraph(currentIndex);
+        });
+
+        // 每隔 3 秒切换到下一个段落
+        setInterval(function() {
+            currentIndex = (currentIndex + 1) % paragraphs.length;
+            showParagraph(currentIndex);
+        }, 3000);
+    </script>
+
 </div>
 
     <div id="mission">
@@ -155,6 +196,9 @@
 
 </script>
 <script>
+
+
+
     function checkLoginStatus() {
         var username = localStorage.getItem("username");
         if (username) {

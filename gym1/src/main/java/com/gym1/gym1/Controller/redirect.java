@@ -4,6 +4,11 @@ package com.gym1.gym1.Controller;
 
 
 import com.gym1.gym1.Model.Trainer;
+import com.gym1.gym1.Model.User;
+import com.gym1.gym1.Repository.userAndplanRepo;
+
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +23,21 @@ import jakarta.servlet.http.HttpSession;
 
 public class redirect {
     @Autowired
+    private userAndplanRepo userAndplanRepo;
+    @Autowired
     private HttpSession session;
 
     @GetMapping("/appointment")
     public String appointment() {
-        return "customer/appointment.html";
+        User currentUser = (User) session.getAttribute("loggedInUser");
+        if(currentUser!=null){
+            if(userAndplanRepo.existsByUser(currentUser) && userAndplanRepo.findByUserLatest(currentUser).getPlanStartedTime().plusMonths(userAndplanRepo.findByUserLatest(currentUser).getPlan().getPlanDurationMonths()).isAfter(LocalDateTime.now())){
+                return "customer/appointment.html";
+            }else{
+                return "haveToPurchasePlan";
+            }
+        }
+        return "redirect:/home";
     }
      @RequestMapping("/home")
     public String home() {
@@ -64,7 +79,10 @@ public class redirect {
     }
     @RequestMapping("/account")
     public String account() {
-        return "/customer/account.html";
+        if(session.getAttribute("loggedInUser")!=null){
+            return "/customer/account.html";
+        }
+        return "redirect:/home";
     }
     @RequestMapping("/view")
     public String view() {
